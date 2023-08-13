@@ -1,0 +1,28 @@
+.promo {
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 207px 10px 246px;
+    box-sizing: border-box;
+
+    background-image: url("../../../images/promoBacImg.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 248px 248px;
+}
+
+
+.promo__title {
+    margin: 0;
+    max-width: 730px;
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+    .promo {
+
+    }
+
+
+}
