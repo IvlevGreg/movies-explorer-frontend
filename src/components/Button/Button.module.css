@@ -1,0 +1,39 @@
+.button {
+    color: inherit;
+    transition: opacity .3s ease;
+    cursor: pointer;
+}
+
+.button_variant_primary {
+    border: none;
+    border-radius: 3px;
+    background: #4285F4;
+}
+
+.button_variant_text {
+    background: transparent;
+    border: none;
+}
+
+.button_color_blue {
+    background: #4285F4;
+}
+
+.button_color_green {
+    background: #3DDC84;
+    color: #000000;
+}
+
+.button_size_m {
+    padding: 5px 12px;
+}
+
+.button:hover {
+    opacity: .8;
+}
+
+.button:active {
+    opacity: .6;
+}
+
+

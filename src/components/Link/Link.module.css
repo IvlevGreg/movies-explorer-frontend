@@ -1,5 +1,26 @@
 .link {
     color: inherit;
+    transition: opacity .3s ease;
+    cursor: pointer;
+
+}
+
+.link_variant_primary {
+    border-radius: 3px;
+    background: #4285F4;
+}
+
+.link_color_green {
+    background: #3DDC84;
+    color: #000000;
+}
+
+.link_size_m {
+    padding: 7px 12px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 160% */
 }
 
 .link__underline {
