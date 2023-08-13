@@ -1,0 +1,40 @@
+.techs {
+    padding: 70px 18px;
+    background: #202020;
+}
+
+.techs__title {
+    margin: 0;
+}
+
+.techs__technologies-title {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+}
+
+.techs__technologies-text {
+    margin: 0;
+    padding: 21.5px 5px;
+    border-radius: 10px;
+    background: #303030;
+}
+
+.techs__technologies-subtitle {
+    margin: 0 0 50px;
+
+}
+
+.techs__technologies-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 84px 84px;
+    justify-content: center;
+}

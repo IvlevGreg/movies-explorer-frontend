@@ -31,3 +31,8 @@ body {
     --main-p-hor-tablet: 50px;
     --main-p-hor-desktop: 70px;
 }
+
+.main__divider {
+    margin-top: 28px;
+    margin-bottom: 60px;
+}
