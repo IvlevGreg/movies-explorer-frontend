@@ -14,7 +14,6 @@ export function AboutMe({ className }) {
       <Divider color="white" className="main__divider" />
 
       <div className={styles.about__content}>
-
         <div>
           <div className={styles.me}>
             <h3 className={styles.me__title}>Виталий</h3>
@@ -28,6 +27,7 @@ export function AboutMe({ className }) {
               начал заниматься фриланс-заказами и ушёл с постоянной работы.
             </Paragraph>
           </div>
+
           <Link
             href="https://github.com/IvlevGreg"
             underline={false}

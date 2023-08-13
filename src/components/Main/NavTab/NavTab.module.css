@@ -4,6 +4,9 @@
 }
 
 .nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -18,10 +21,7 @@
     transition: opacity .3s ease;
 }
 
-.nav__link:hover {
-    opacity: .8;
-}
-
-.nav__link:active {
-    opacity: .6;
+.nav__item {
+    margin: 0;
+    padding: 0;
 }

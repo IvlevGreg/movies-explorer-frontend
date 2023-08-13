@@ -8,7 +8,10 @@
 }
 
 .about__list {
-    margin-bottom: 60px;
+    margin: 0 0 60px;
+    padding: 0;
+    list-style: none;
+
     display: grid;
     gap: 60px 30px;
     grid-template-columns: 1fr;
