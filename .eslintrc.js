@@ -28,6 +28,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'no-useless-escape': 2,
     'no-console': 'error',
+    'react/jsx-props-no-spreading': 0,
     'import/prefer-default-export': 0,
     'max-len': ['warn', { code: 100 }],
   },
