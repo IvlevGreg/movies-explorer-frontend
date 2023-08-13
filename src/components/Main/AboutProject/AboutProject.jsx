@@ -33,7 +33,7 @@ export function AboutProject({ className }) {
   return (
     <div className={cn(className, styles.about)} id="about">
       <Heading size={2} className={styles.about__title}>О проекте</Heading>
-      <Divider color="white" className={styles.about__divider} />
+      <Divider color="white" className="main__divider" />
       <List elements={ABOUT_LIST_ELEMENTS} className={styles.about__list} />
 
       <div className={styles['time-line']}>
