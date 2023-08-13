@@ -14,7 +14,7 @@ export function AboutMe({ className }) {
       <Divider color="white" className="main__divider" />
 
       <div className={styles.about__content}>
-        <div>
+        <div className={styles['about__me-container']}>
           <div className={styles.me}>
             <h3 className={styles.me__title}>Виталий</h3>
             <Paragraph size={12} weight={500} reset>Фронтенд-разработчик, 30 лет</Paragraph>

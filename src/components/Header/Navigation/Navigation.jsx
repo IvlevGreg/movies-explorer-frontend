@@ -5,7 +5,7 @@ import { Button } from '../../Button';
 import burgerIcon from '../../../images/burgerIcon.svg';
 import { Link } from '../../Link';
 
-const IS_AUTH = true;
+const IS_AUTH = false;
 
 export function Navigation({ className }) {
   const [isModalVisible, setIsModalVisible] = useState(false);

@@ -37,3 +37,15 @@
     margin: 0;
 }
 
+@media screen and (min-width: 768px) {
+    .paragraph_size_11 {
+        font-size: 12px;
+        line-height: 18px; /* 150% */
+    }
+
+    .paragraph_size_18 {
+        font-size: 20px;
+        letter-spacing: -0.8px;
+    }
+
+}

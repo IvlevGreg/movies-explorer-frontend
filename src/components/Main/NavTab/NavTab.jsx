@@ -13,7 +13,7 @@ export function NavTab({ className }) {
       <ul className={styles.nav__list}>
         {LINKS.map(({ text, href }) => (
           <li key={href} className={styles.nav__item}>
-            <Link href={href} className={styles.nav__link}>{text}</Link>
+            <Link href={href} className={styles.nav__link} size="m">{text}</Link>
           </li>
         ))}
 

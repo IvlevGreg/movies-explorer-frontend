@@ -47,3 +47,26 @@
     margin: 0;
     text-align: center;
 }
+
+@media screen and (min-width: 768px) {
+    .about {
+        padding: 95px 50px;
+    }
+
+    .about__list {
+        margin-bottom: 90px;
+        gap: 60px 30px;
+        grid-template-columns: repeat(2, calc(50% - 15px));
+        grid-template-rows: 1fr;
+    }
+
+    .about__stages-title {
+        margin-bottom: 24px;;
+    }
+
+    .time-line {
+        grid-template-columns: 1.4fr 5.28fr;
+    }
+}
+
+
