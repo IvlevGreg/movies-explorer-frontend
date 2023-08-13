@@ -1,0 +1,27 @@
+.nav {
+    padding: 25px 14px;
+    background: #272727;
+}
+
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.nav__link {
+    color: #FFF;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 16px; /* 145.455% */
+    transition: opacity .3s ease;
+}
+
+.nav__link:hover {
+    opacity: .8;
+}
+
+.nav__link:active {
+    opacity: .6;
+}
