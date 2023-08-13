@@ -1,0 +1,50 @@
+.about {
+    padding: 70px 18px;
+    background: #202020;
+}
+
+.about__title {
+    margin: 0 0 28px;
+}
+
+.about__divider {
+    margin-bottom: 60px;
+}
+
+.about__list {
+    margin-bottom: 60px;
+    display: grid;
+    gap: 60px 30px;
+    grid-template-columns: 1fr;
+    /*grid-template-columns: repeat(2, calc(50% - 15px));*/
+}
+
+.about__stages-title {
+    margin: 0 0 16px;
+}
+
+.about__stages-text {
+    margin: 0;
+}
+
+
+.time-line {
+    display: grid;
+    grid-template-columns: 1fr 1.84fr;
+}
+
+.time-line__time {
+    padding: 9px 5px;
+    margin: 0 0 10px;
+    text-align: center;
+    background: #303030;
+}
+
+.time-line__time_color_green {
+    background: #3DDC84;
+}
+
+.time-line__text {
+    margin: 0;
+    text-align: center;
+}
