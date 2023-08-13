@@ -2,7 +2,6 @@ import cn from 'classnames';
 import styles from './Techs.module.css';
 import { Heading } from '../../Heading';
 import { Divider } from '../../Divider';
-import { List } from '../../List';
 import { Paragraph } from '../../Paragraph';
 
 const TECHS_LIST = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB'];
@@ -36,7 +35,6 @@ export function Techs({ className }) {
           </li>
         ))}
       </ul>
-      <List elements={TECHS_LIST} className={styles['techs__technologies-list']} />
     </div>
   );
 }
