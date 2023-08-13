@@ -7,6 +7,10 @@
     background: #000;
 }
 
+.divider_color_gray {
+    background: #424242;
+}
+
 .divider_color_white {
     background: #DADADA;
 }
