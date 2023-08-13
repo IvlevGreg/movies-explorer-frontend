@@ -1,0 +1,38 @@
+.about {
+    padding: 70px 14px;
+    background: #202020;
+}
+
+.about__title {
+    margin: 0;
+}
+
+.about__content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+}
+
+.about__img {
+
+}
+
+.me {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.me__title {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -1.2px;
+}
+
+.about__link {
+    font-size: 14px;
+    font-weight: 500;
+}
