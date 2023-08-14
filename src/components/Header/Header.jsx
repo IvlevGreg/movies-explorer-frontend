@@ -6,11 +6,14 @@ import { Navigation } from './Navigation';
 
 export function Header({ className }) {
   return (
-    <div className={cn(className, styles.header)}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <Link href=""><img src={logo} alt="Логотип" /></Link>
-      <Navigation />
+    <header className={cn(className, styles.header)}>
+      <div className={cn('main__content', styles.header__content)}>
 
-    </div>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <Link href="/"><img src={logo} alt="Логотип" /></Link>
+        <Navigation />
+
+      </div>
+    </header>
   );
 }

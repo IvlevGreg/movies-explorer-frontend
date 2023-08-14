@@ -45,10 +45,10 @@
     }
 
     .techs__technologies-title {
+        margin-bottom: 32px;
         font-size: 50px;
         line-height: 58px; /* 116% */
         letter-spacing: -2px;
-        margin-bottom: 32px;
     }
 
     .techs__technologies-subtitle {
@@ -70,3 +70,17 @@
     }
 }
 
+
+@media screen and (min-width: 1024px) {
+    .techs {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .techs__technologies-subtitle {
+        margin-bottom: 100px
+    }
+    .techs__technologies-item {
+        max-width: 90px;
+    }
+}

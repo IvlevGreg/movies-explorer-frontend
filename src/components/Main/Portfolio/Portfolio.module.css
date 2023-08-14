@@ -41,7 +41,7 @@
     padding-right: 20px;
     background-image: url("../../../images/arrowTopIcon.svg");
     background-repeat: no-repeat;
-    background-position: right 5px center;
+    background-position: right 5px center ;
 }
 
 @media screen and (min-width: 768px) {
@@ -61,5 +61,20 @@
         font-size: 28px;
         line-height: 50px; /* 178.571% */
         letter-spacing: -1.12px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .portfolio {
+        padding-bottom: 125px;
+    }
+    .portfolio__link-text {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+    }
+
+    .portfolio__link-text {
+        background-size: 20px;
     }
 }

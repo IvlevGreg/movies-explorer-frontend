@@ -12,22 +12,25 @@ const LINKS = [{
 }];
 export function Portfolio({ className }) {
   return (
-    <div className={cn(className, styles.portfolio)}>
-      <h2 className={styles.portfolio__title}> Портфолио</h2>
-      <ul className={styles.portfolio__list}>
-        {LINKS.map(({ href, text }, i) => (
-          <li key={href} className={styles.portfolio__item}>
-            <Link href={href} underline={false} className={styles.portfolio__link}>
-              <div className={styles['portfolio__link-text']}>
-                {text}
-              </div>
-              {i !== LINKS.length - 1
-                    && <Divider color="white" />}
-            </Link>
-          </li>
-        ))}
+    <section className={cn(className, styles.portfolio)}>
+      <div className="main__content">
 
-      </ul>
-    </div>
+        <h2 className={styles.portfolio__title}> Портфолио</h2>
+        <ul className={styles.portfolio__list}>
+          {LINKS.map(({ href, text }, i) => (
+            <li key={href} className={styles.portfolio__item}>
+              <Link href={href} underline={false} className={styles.portfolio__link}>
+                <div className={styles['portfolio__link-text']}>
+                  {text}
+                </div>
+                {i !== LINKS.length - 1
+                    && <Divider color="white" />}
+              </Link>
+            </li>
+          ))}
+
+        </ul>
+      </div>
+    </section>
   );
 }

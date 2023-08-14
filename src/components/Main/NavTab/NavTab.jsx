@@ -9,15 +9,17 @@ const LINKS = [
 
 export function NavTab({ className }) {
   return (
-    <nav className={cn(className, styles.nav)}>
-      <ul className={styles.nav__list}>
-        {LINKS.map(({ text, href }) => (
-          <li key={href} className={styles.nav__item}>
-            <Link href={href} className={styles.nav__link} size="m">{text}</Link>
-          </li>
-        ))}
+    <section className={cn(className, styles.nav)}>
+      <nav className="main__content">
+        <ul className={styles.nav__list}>
+          {LINKS.map(({ text, href }) => (
+            <li key={href} className={styles.nav__item}>
+              <Link href={href} className={styles.nav__link} size="m">{text}</Link>
+            </li>
+          ))}
 
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </section>
   );
 }

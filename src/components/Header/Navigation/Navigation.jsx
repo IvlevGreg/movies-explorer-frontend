@@ -12,7 +12,7 @@ export function Navigation({ className }) {
   const notAuthComponent = (
     <div>
       <Link
-        href="/profile"
+        href="/signup"
         underline={false}
         size="m"
       >

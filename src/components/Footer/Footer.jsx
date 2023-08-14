@@ -12,37 +12,40 @@ const LINKS = [{
 
 export function Footer({ className }) {
   return (
-    <div className={cn(className, styles.footer)}>
-      <Paragraph
-        size={12}
-        color="grey"
-        align="center"
-        className={styles.footer__title}
-      >
-        Учебный проект Яндекс.Практикум х BeatFilm.
-      </Paragraph>
-      <Divider color="gray" className={styles.footer__divider} />
+    <footer className={cn(className, styles.footer)}>
+      <div className="main__content">
 
-      <div className={styles.footer_content}>
-        <ul className={styles.footer__list}>
-          {LINKS.map(({ text, href }) => (
-            <li key={href} className={styles.footer__item}>
-              <Link
-                target="_blank"
-                underline={false}
-                href={href}
-                className={styles.footer__link}
-              >
-                {text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Paragraph size={12} color="grey" align="center" reset>
-          ©2020
+        <Paragraph
+          size={12}
+          color="grey"
+          align="center"
+          className={styles.footer__title}
+        >
+          Учебный проект Яндекс.Практикум х BeatFilm.
         </Paragraph>
+        <Divider color="gray" className={styles.footer__divider} />
+
+        <div className={styles.footer_content}>
+          <ul className={styles.footer__list}>
+            {LINKS.map(({ text, href }) => (
+              <li key={href} className={styles.footer__item}>
+                <Link
+                  target="_blank"
+                  underline={false}
+                  href={href}
+                  className={styles.footer__link}
+                >
+                  {text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <Paragraph size={12} color="grey" align="center" reset>
+            ©2020
+          </Paragraph>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 }

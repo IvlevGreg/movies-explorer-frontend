@@ -23,6 +23,12 @@
     .promo {
         padding: 326px 19px 342px;
         background-size: 320px 320px;
+    }
+}
 
+@media screen and (min-width: 1024px) {
+    .promo {
+        padding-top: 184px;
+        padding-bottom: 224px;
     }
 }

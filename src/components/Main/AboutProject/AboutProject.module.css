@@ -70,3 +70,16 @@
 }
 
 
+@media screen and (min-width: 1024px) {
+    .about {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+
+    .about__list {
+        column-gap: 35px
+    }
+    .about__list {
+        margin-bottom: 120px;
+    }
+}
