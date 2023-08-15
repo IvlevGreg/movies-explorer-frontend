@@ -2,7 +2,7 @@ import cn from 'classnames';
 import styles from './Button.module.css';
 
 export function Button({
-  className, children, variant = 'primary', color = 'Blue', size = 'm', ...rest
+  className, children, variant = 'primary', color = 'Blue', size = 'm', block, ...rest
 }) {
   const classNames = cn(
     className,
@@ -15,7 +15,9 @@ export function Button({
       [styles.button_color_green]: color === 'green',
       // size
       [styles.button_size_m]: size === 'm',
+      [styles.button_size_l]: size === 'l',
 
+      [styles.button_w_100]: block,
     },
   );
 

@@ -15,6 +15,10 @@
     color: #000000;
 }
 
+.link_color_blue {
+    color: #4285F4;
+}
+
 .link_size_m {
     padding: 7px 12px;
     font-size: 10px;

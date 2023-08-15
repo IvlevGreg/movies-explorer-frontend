@@ -8,6 +8,7 @@ export function Link({
     [styles.link__underline]: !underline,
     // color
     [styles.link_color_green]: color === 'green',
+    [styles.link_color_blue]: color === 'blue',
 
     // variant
     [styles.link_variant_primary]: variant === 'primary',
