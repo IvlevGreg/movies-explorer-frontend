@@ -24,7 +24,12 @@ export function Register({ className }) {
       <h1 className={styles.register__title}>Добро пожаловать!</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={cn(styles.form__container, styles.form, styles.form__container_size_20)}
+        className={cn(
+          styles.form__container,
+          styles.form,
+          styles.register__form,
+          styles.form__container_size_20,
+        )}
       >
         <div className={cn(styles.form__container, styles.form__container_size_24)}>
           <Label

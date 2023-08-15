@@ -1,6 +1,6 @@
 .register {
     padding: 56px 30px 30px;
-    max-width: 396px;
+    max-width: 456px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -51,5 +51,39 @@
     font-size: 12px;
     font-weight: 400;
     text-align: center;
+}
+
+@media screen and (min-height: 512px) {
+    .register {
+        align-items: flex-start;
+    }
+    .register__title {
+        margin-bottom: 40px;
+    }
+
+    .register__img {
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (min-height: 512px) {
+    .register {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+}
+
+@media screen and (min-height: 912px) {
+    .register {
+        justify-content: center;
+    }
+    .register__form {
+        justify-content: flex-start;
+        gap: 70px;
+    }
+    .form {
+        height: auto;
+        width: 100%;
+    }
 }
 
