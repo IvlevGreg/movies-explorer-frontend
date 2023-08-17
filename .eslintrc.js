@@ -31,5 +31,11 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'import/prefer-default-export': 0,
     'max-len': ['warn', { code: 100 }],
+    'jsx-a11y/label-has-associated-control': [2, {
+      labelComponents: ['Label'],
+      labelAttributes: ['label'],
+      controlComponents: ['Input', 'Controller', 'NameController', 'EmailController', 'PasswordController'],
+      depth: 3,
+    }],
   },
 };
