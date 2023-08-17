@@ -5,6 +5,8 @@ import { ProtectedRouteElement } from '../ProtectedRouteElement';
 import { Main } from '../Main';
 import { Register } from '../Register';
 import { NotFoundPage } from '../NotFoundPage';
+import { Login } from '../Login';
+import { Profile } from '../Profile';
 
 export function App() {
   return (
@@ -18,7 +20,7 @@ export function App() {
               <Main />
               <Footer />
             </ProtectedRouteElement>
-            )}
+          )}
         />
         <Route
           path="/movies"
@@ -28,7 +30,7 @@ export function App() {
               movies
               <Footer />
             </ProtectedRouteElement>
-            )}
+          )}
         />
         <Route
           path="/saved-movies"
@@ -38,21 +40,26 @@ export function App() {
               saved-movies
               <Footer />
             </ProtectedRouteElement>
-            )}
+          )}
         />
         <Route
           path="/profile"
           element={(
             <ProtectedRouteElement loggedIn>
               <Header />
-              profile
-              <Footer />
+              <Profile />
             </ProtectedRouteElement>
-            )}
+          )}
         />
 
-        <Route path="/signin" element={<h1>signin</h1>} />
-        <Route path="/signup" element={<Register />} />
+        <Route
+          path="/signin"
+          element={(<Login />)}
+        />
+        <Route
+          path="/signup"
+          element={(<Register />)}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
