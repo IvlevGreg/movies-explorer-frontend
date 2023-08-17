@@ -1,12 +1,17 @@
 .page {
-    padding: 56px 30px 30px;
+    padding: 70px 30px 30px;
     max-width: 456px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - var(--header-height));
     box-sizing: border-box;
+}
+
+.page_logo {
+    padding: 56px 30px 30px;
+    height: 100vh;
 }
 
 .page__title {
@@ -22,6 +27,7 @@
     margin-bottom: 50px;
 }
 
+
 .form {
     height: 100%;
     width: 100%;
@@ -35,6 +41,11 @@
 
 .form__container_size_20 {
     gap: 20px;
+}
+
+.form__controllers {
+    justify-content: flex-start;
+    min-height: 257px;
 }
 
 .form__container_size_14 {
@@ -53,9 +64,16 @@
     text-align: center;
 }
 
-@media screen and (min-height: 512px) {
-    .register {
+@media screen and (min-width: 512px) {
+    .page {
+        padding-top: 150px;
+        padding-bottom: 70px;
         align-items: flex-start;
+    }
+
+    .page_logo {
+        padding-top: 70px;
+        padding-bottom: 70px;
     }
 
     .page__title {
@@ -67,15 +85,8 @@
     }
 }
 
-@media screen and (min-height: 512px) {
-    .register {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
-}
-
 @media screen and (min-height: 912px) {
-    .register {
+    .page {
         justify-content: center;
     }
 

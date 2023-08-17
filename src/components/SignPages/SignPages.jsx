@@ -1,17 +1,13 @@
 import cn from 'classnames';
 import styles from './SignPages.module.css';
 import logo from '../../images/logo.svg';
-import { Link } from '../Link';
-import { Button } from '../Button';
 
 export function SignPages({
-  className, title, controllers, handleSubmit, link, btnText,
+  className, title, controllers, handleSubmit, actionChildren, isLogo = true,
 }) {
-  // eslint-disable-next-line no-console
-
   return (
-    <div className={cn(className, styles.page)}>
-      <img src={logo} alt="лого" className={styles.page__img} />
+    <div className={cn(className, styles.page, { [styles.page_logo]: isLogo })}>
+      {isLogo && <img src={logo} alt="лого" className={styles.page__img} />}
       <h1 className={styles.page__title}>{title}</h1>
       <form
         onSubmit={handleSubmit}
@@ -22,30 +18,17 @@ export function SignPages({
           styles.form__container_size_20,
         )}
       >
-        <div className={cn(styles.form__container, styles.form__container_size_24)}>
+        <div className={cn(
+          styles.form__container,
+          styles.form__controllers,
+          styles.form__container_size_24,
+        )}
+        >
           {controllers}
         </div>
 
         <div className={cn(styles.form__container, styles.form__container_size_14)}>
-          <Button
-            type="submit"
-            variant="primary"
-            color="blue"
-            size="l"
-            block
-          >
-            {btnText}
-          </Button>
-          <p className={styles.page__signin}>
-            linkText
-            <Link
-              href={link.href}
-              color="blue"
-              underline={false}
-            >
-              {link.text}
-            </Link>
-          </p>
+          {actionChildren}
         </div>
       </form>
     </div>

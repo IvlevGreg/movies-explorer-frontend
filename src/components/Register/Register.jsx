@@ -4,6 +4,9 @@ import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
 import { PasswordController } from '../Controllers/PasswordController';
 import { SignPages } from '../SignPages';
+import { Button } from '../Button';
+import styles from '../SignPages/SignPages.module.css';
+import { Link } from '../Link';
 
 export function Register({ className }) {
   const { control, formState: { errors }, handleSubmit } = useForm({
@@ -39,22 +42,37 @@ export function Register({ className }) {
     </>
   );
 
-  const linkProps = {
-    linkText: 'Уже зарегистрированы? ',
-    href: 'signin',
-    text: 'Войти',
-  };
+  const actionChildren = (
+    <>
+      <Button
+        type="submit"
+        variant="primary"
+        color="blue"
+        size="l"
+        block
+      >
+        Зарегистрироваться
+      </Button>
+      <p className={styles.page__signin}>
+        Уже зарегистрированы?
+        {' '}
+        <Link
+          href="signin"
+          color="blue"
+          underline={false}
+        >
+          Войти
+        </Link>
+      </p>
+    </>
+  );
 
   return (
     <SignPages
-      defaultValues={{
-        name: '', email: '', password: '',
-      }}
       title="Добро пожаловать!"
       controllers={controllers}
       handleSubmit={handleSubmit(onSubmit)}
-      btnText="Зарегистрироваться"
-      link={linkProps}
+      actionChildren={actionChildren}
       className={className}
     />
   );
