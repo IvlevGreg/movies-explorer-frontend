@@ -31,6 +31,9 @@ body {
     --main-p-hor-mobile: 18px;
     --main-p-hor-tablet: 50px;
     --main-p-hor-desktop: 70px;
+
+    /*size*/
+    --header-height: 74px
 }
 
 .main__divider {
