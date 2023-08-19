@@ -10,7 +10,7 @@ export function Header({ className }) {
       <div className={cn('main__content', styles.header__content)}>
 
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <Link href="/"><img src={logo} alt="Логотип" /></Link>
+        <Link to="/" type="LinkRouter"><img src={logo} alt="Логотип" /></Link>
         <Navigation />
 
       </div>

@@ -50,6 +50,7 @@ export function Login({ className }) {
         {' '}
         <Link
           href="signup"
+          type="LinkRouter"
           color="blue"
           underline={false}
         >

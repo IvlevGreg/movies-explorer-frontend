@@ -1,53 +1,61 @@
 .link {
-    color: inherit;
-    transition: opacity .3s ease;
-    cursor: pointer;
-
+  color: inherit;
+  transition: opacity .3s ease;
+  cursor: pointer;
 }
 
 .link_variant_primary {
-    border-radius: 3px;
-    background: #4285F4;
+  border-radius: 3px;
+  background: #4285F4;
 }
 
 .link_color_green {
-    background: #3DDC84;
-    color: #000000;
+  background: #3DDC84;
+  color: #000000;
 }
 
 .link_color_blue {
-    color: #4285F4;
+  color: #4285F4;
 }
 
 .link_size_m {
-    padding: 7px 12px;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 16px; /* 160% */
+  padding: 7px 12px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 160% */
 }
 
 .link__underline {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .link:hover {
-    opacity: .7;
+  opacity: .7;
 }
 
 .link:active {
-    opacity: .5;
+  opacity: .5;
+}
+
+.link_active {
+  box-shadow: inset 0 -2px 0 0 #fff;
 }
 
 @media screen and (min-width: 768px) {
-    .link_size_m {
-        padding: 8px 20px;
-        font-size: 12px;
-    }
+  .link_size_m {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    .link_size_m {
-        font-size: 13px;
-    }
+  .link_size_m {
+    font-size: 13px;
+  }
+
+  .link.link_active {
+    box-shadow: none;
+    font-weight: 500;
+  }
 }

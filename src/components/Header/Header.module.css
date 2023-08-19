@@ -1,17 +1,25 @@
 .header {
-    padding: 18px 14px;
-    background: #073042;
+  padding: 18px 14px;
+  background: #073042;
 }
 
-.header__content{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
-    .header {
-        padding: 18px 30px;
-    }
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__content {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 44px;
+  }
 }

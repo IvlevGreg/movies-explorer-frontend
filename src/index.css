@@ -8,6 +8,10 @@ body {
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
+.modal-open {
+    overflow: hidden;
+}
+
 :root {
     /*background*/
     --main-bg-color: #202020;

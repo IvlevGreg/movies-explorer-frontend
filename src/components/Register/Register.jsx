@@ -58,6 +58,7 @@ export function Register({ className }) {
         {' '}
         <Link
           href="signin"
+          type="LinkRouter"
           color="blue"
           underline={false}
         >
