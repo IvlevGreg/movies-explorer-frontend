@@ -28,45 +28,39 @@ export function AboutProject({ className }) {
               <Paragraph className={styles['about__stages-title']} size={18}>
                 {title}
               </Paragraph>
-              <Paragraph className={styles['about__stages-text']} size={11}>
+              <p className={styles['about__stages-text']}>
                 {text}
-              </Paragraph>
+              </p>
             </li>
           ))}
         </ul>
 
         <div className={styles['time-line']}>
           <div className={styles['time-line__container']}>
-            <Paragraph
-              size={11}
-              color="black"
+            <p
               className={cn(styles['time-line__time'], styles['time-line__time_color_green'])}
             >
               1 неделя
-            </Paragraph>
-            <Paragraph
-              size={11}
-              color="grey"
+            </p>
+            <p
               className={styles['time-line__text']}
             >
               Back-end
-            </Paragraph>
+            </p>
           </div>
 
           <div className={styles['time-line__container']}>
-            <Paragraph
-              size={11}
+            <p
               className={styles['time-line__time']}
             >
               4 недели
-            </Paragraph>
-            <Paragraph
-              size={11}
+            </p>
+            <p
               color="grey"
               className={styles['time-line__text']}
             >
               Front-end
-            </Paragraph>
+            </p>
           </div>
         </div>
       </div>

@@ -44,6 +44,7 @@ export function Navigation({ className }) {
         <>
           <Button
             variant="text"
+            size="0"
             onClick={openModal}
             className={styles.nav__burger}
           >

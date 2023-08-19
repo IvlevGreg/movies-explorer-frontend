@@ -14,16 +14,14 @@ export function Techs({ className }) {
         <Heading size={2} className={styles.techs__title}>
           Технологии
         </Heading>
-        <Divider color="black" className="main__divider main__divider_tech" />
+        <Divider color="white" className="main__divider main__divider_tech" />
 
         <h3 className={styles['techs__technologies-title']}>7 технологий</h3>
-        <Paragraph
-          size={11}
-          align="center"
+        <p
           className={styles['techs__technologies-subtitle']}
         >
           На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
-        </Paragraph>
+        </p>
         <ul className={styles['techs__technologies-list']}>
           {TECHS_LIST.map((tech) => (
             <li key={tech} className={styles['techs__technologies-item']}>

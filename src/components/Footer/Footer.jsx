@@ -16,7 +16,6 @@ export function Footer({ className }) {
       <div className="main__content">
 
         <Paragraph
-          size={12}
           color="grey"
           align="center"
           className={styles.footer__title}
@@ -41,7 +40,7 @@ export function Footer({ className }) {
             ))}
           </ul>
 
-          <Paragraph size={12} color="grey" align="center" reset>
+          <Paragraph className={styles.footer__ps} color="grey" align="center" reset>
             ©2020
           </Paragraph>
         </div>

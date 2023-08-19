@@ -19,8 +19,15 @@ export function AboutMe({ className }) {
           <div className={styles['about__me-container']}>
             <div className={styles.me}>
               <h3 className={styles.me__title}>Виталий</h3>
-              <Paragraph size={12} weight={500} reset>Фронтенд-разработчик, 30 лет</Paragraph>
-              <Paragraph size={11} reset>
+              <Paragraph
+                size={12}
+                weight={500}
+                className={styles.me__text}
+                reset
+              >
+                Фронтенд-разработчик, 30 лет
+              </Paragraph>
+              <Paragraph reset className={styles.me__descr}>
                 Я родился и живу в Саратове, закончил факультет экономики СГУ.
                 У меня есть жена и дочь.
                 Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
