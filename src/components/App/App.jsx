@@ -7,6 +7,8 @@ import { Register } from '../Register';
 import { NotFoundPage } from '../NotFoundPage';
 import { Login } from '../Login';
 import { Profile } from '../Profile';
+import { SavedMovies } from '../SavedMovies';
+import { Movies } from '../Movies';
 
 export function App() {
   return (
@@ -27,7 +29,7 @@ export function App() {
           element={(
             <ProtectedRouteElement loggedIn>
               <Header />
-              movies
+              <Movies />
               <Footer />
             </ProtectedRouteElement>
           )}
@@ -37,7 +39,7 @@ export function App() {
           element={(
             <ProtectedRouteElement loggedIn>
               <Header />
-              saved-movies
+              <SavedMovies />
               <Footer />
             </ProtectedRouteElement>
           )}
