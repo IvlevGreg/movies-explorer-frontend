@@ -1,0 +1,30 @@
+.label {
+    position: relative;
+    color: #FFF;
+    display: flex;
+    gap: 10px;
+}
+
+.label_column_column {
+    flex-direction: column;
+}
+
+.label_column_row {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label_error {
+    color: #EE3465;
+}
+
+.label__text {
+    color: #8B8B8B;
+    font-size: 10px;
+}
+
+.label__error-text {
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+}

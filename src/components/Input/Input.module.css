@@ -1,0 +1,24 @@
+.input {
+    padding: 15px;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+    background: #2F2F2F;
+}
+
+.input_radius_8 {
+    border-radius: 8px;
+}
+
+.input_radius_40 {
+    border-radius: 40px;
+}
+
+.input:disabled {
+    background: transparent;
+}
+
+.input:focus {
+    outline: none;
+}

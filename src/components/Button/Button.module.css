@@ -24,6 +24,18 @@
     color: #000000;
 }
 
+.button_color_red {
+    color: #EE3465;
+}
+
+.button_color_gray {
+    background: #2F2F2F;
+}
+
+.button_size_0 {
+    padding: 0;
+}
+
 .button_size_m {
     padding: 5px 12px;
 }

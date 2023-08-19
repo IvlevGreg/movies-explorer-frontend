@@ -13,9 +13,12 @@ export function Button({
       [styles.button_variant_text]: variant === 'text',
       [styles.button_color_blue]: color === 'blue',
       [styles.button_color_green]: color === 'green',
+      [styles.button_color_red]: color === 'red',
+      [styles.button_color_gray]: color === 'gray',
       // size
       [styles.button_size_m]: size === 'm',
       [styles.button_size_l]: size === 'l',
+      [styles.button_size_0]: size === '0',
 
       [styles.button_w_100]: block,
     },
