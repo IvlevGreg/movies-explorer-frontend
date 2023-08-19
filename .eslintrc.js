@@ -34,7 +34,14 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': [2, {
       labelComponents: ['Label'],
       labelAttributes: ['label'],
-      controlComponents: ['Input', 'Controller', 'NameController', 'EmailController', 'PasswordController'],
+      controlComponents: [
+        'Input',
+        'Controller',
+        'NameController',
+        'EmailController',
+        'PasswordController',
+        'SearchController',
+        'FilterCheckboxController'],
       depth: 3,
     }],
   },
