@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# Movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## макет: dark-3
 ## Available Scripts
