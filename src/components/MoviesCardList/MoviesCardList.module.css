@@ -1,16 +1,26 @@
+.content {
+    display: flex;
+    gap:60px;
+    flex-direction: column;
+}
+
+
 .movies {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
 }
+
 .movies__item {
     width: 100%;
 }
 
+.movies__btn {
+    padding: 10px;
+}
 
 @media screen and (min-width: 520px) {
     .movies {

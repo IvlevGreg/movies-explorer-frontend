@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import styles from './MoviesCard.module.css';
-import { Button } from '../../Button';
+import styles from './MoviesCardMain.module.css';
+import { Button } from '../Button';
 
-export function MoviesCard({
+export function MoviesCardMain({
   className, link, alt, title, duration, isInitialLiked = false,
 }) {
   const [isLiked, setIsLiked] = useState(isInitialLiked);
