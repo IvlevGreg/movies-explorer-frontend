@@ -1,59 +1,63 @@
 .button {
-    color: inherit;
-    transition: opacity .3s ease;
-    cursor: pointer;
+  color: inherit;
+  transition: opacity .3s ease;
+  cursor: pointer;
 }
 
 .button_variant_primary {
-    border: none;
-    border-radius: 3px;
-    background: #4285F4;
+  border: none;
+  border-radius: 3px;
+  background: #4285F4;
 }
 
 .button_variant_text {
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
 }
 
 .button_color_blue {
-    background: #4285F4;
+  background: #4285F4;
 }
 
 .button_color_green {
-    background: #3DDC84;
-    color: #000000;
+  background: #3DDC84;
+  color: #000000;
 }
 
 .button_color_red {
-    color: #EE3465;
+  color: #EE3465;
 }
 
 .button_color_gray {
-    background: #2F2F2F;
+  background: #2F2F2F;
 }
 
 .button_size_0 {
-    padding: 0;
+  padding: 0;
 }
 
 .button_size_m {
-    padding: 5px 12px;
+  padding: 5px 12px;
 }
 
 .button_size_l {
-    padding: 15px 30px;
+  padding: 15px 30px;
 }
 
 .button_w_100 {
-    width: 100%;
+  width: 100%;
 }
 
 .button:hover {
-    opacity: .8;
+  opacity: .8;
+}
+
+.button:focus {
+  outline: 2px solid var(--main-outline-color);
 }
 
 .button:active {
-    opacity: .6;
+  opacity: .6;
 }
 
 

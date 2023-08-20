@@ -36,6 +36,9 @@ body {
     --main-p-hor-tablet: 50px;
     --main-p-hor-desktop: 70px;
 
+    /* ui */
+  --main-outline-color: #135dd5;
+
     /*size*/
     --header-height: 74px
 }
