@@ -4,11 +4,11 @@ import { Divider } from '../../Divider';
 import { Link } from '../../Link';
 
 const LINKS = [{
-  href: 'https://ya.ru/2', text: 'Статичный сайт',
+  href: 'https://github.com/IvlevGreg/how-to-learn', text: 'Статичный сайт',
 }, {
-  href: 'https://ya.ru/3', text: 'Адаптивный сайт',
+  href: 'https://github.com/IvlevGreg/russian-travel', text: 'Адаптивный сайт',
 }, {
-  href: 'https://ya.ru/1', text: 'Одностраничное приложение',
+  href: 'https://github.com/IvlevGreg/react-mesto-api-full-gha', text: 'Одностраничное приложение',
 }];
 
 export function Portfolio({ className }) {
