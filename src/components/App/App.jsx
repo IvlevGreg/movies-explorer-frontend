@@ -18,11 +18,11 @@ export function App() {
           path="/"
           element={(
             <ProtectedRouteElement loggedIn>
-              <Header />
+              <Header color="secondary" />
               <Main />
               <Footer />
             </ProtectedRouteElement>
-          )}
+)}
         />
         <Route
           path="/movies"
@@ -32,7 +32,7 @@ export function App() {
               <Movies />
               <Footer />
             </ProtectedRouteElement>
-          )}
+)}
         />
         <Route
           path="/saved-movies"
@@ -42,7 +42,7 @@ export function App() {
               <SavedMovies />
               <Footer />
             </ProtectedRouteElement>
-          )}
+)}
         />
         <Route
           path="/profile"
@@ -51,7 +51,7 @@ export function App() {
               <Header />
               <Profile />
             </ProtectedRouteElement>
-          )}
+)}
         />
 
         <Route

@@ -2,8 +2,14 @@
   padding: 18px 14px;
   box-sizing: border-box;
   height: var(--header-height);
+}
 
-  background: #073042;
+.header_color_main {
+  background: var(--main-bg-color);
+}
+
+.header_color_secondary {
+  background: var(--secondary-bg-color);
 }
 
 .header__content {
