@@ -56,6 +56,10 @@
   outline: 2px solid var(--main-outline-color);
 }
 
+.button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 .button:active {
   opacity: .6;
 }
