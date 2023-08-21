@@ -15,8 +15,8 @@ export function NavTab({ className }) {
           {LINKS.map(({ text, href }) => (
             <li key={href} className={styles.nav__item}>
               <Link
-                to={href}
-                type="LinkRouter"
+                href={href}
+                type="a"
                 className={styles.nav__link}
                 size="m"
               >
