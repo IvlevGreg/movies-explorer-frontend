@@ -1,0 +1,65 @@
+.movie {
+    border-radius: 6px;
+    background: #222;
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.08);
+}
+
+.movie__img {
+    height: 168px;
+    align-self: center;
+    width: 100%;
+    object-fit: cover;
+}
+
+.movie__container {
+    position: relative;
+    padding: 0 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.movie__title {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background .3s ease;
+    background: no-repeat center right 5px;
+}
+
+.movie__btn:hover .movie__title,
+.movie__btn:focus .movie__title,
+.movie__btn:active .movie__title {
+    background-size: 100%;
+    background: url("../../images/crossIcon.svg") no-repeat center right 5px;
+}
+
+.movie__btn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+.movie__duration {
+    margin: 0;
+    color: #8B8B8B;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 520px) {
+    .movie__img {
+        height: 190px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .movie__img {
+        height: 203px;
+    }
+}

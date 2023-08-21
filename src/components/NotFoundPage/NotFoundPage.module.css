@@ -1,0 +1,49 @@
+.page404 {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: 30px;
+    transform: translate(50%, -50%);
+    text-align: center;
+}
+
+.page404__title {
+    margin: 0 0 10px;
+    font-size: 80px;
+    font-weight: 400;
+}
+
+.page404__text {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.page404__btn {
+    position: absolute;
+    bottom: 30px;
+    right: 50%;
+    transform: translateX(50%);
+
+    padding: 10px;
+
+    color: #4285F4;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+    .page404__title {
+        margin-bottom: 5px;
+        font-size: 140px;
+    }
+
+    .page404__text {
+        font-size: 16px;
+    }
+    .page404__btn {
+        bottom: 60px;
+    }
+}
+
+

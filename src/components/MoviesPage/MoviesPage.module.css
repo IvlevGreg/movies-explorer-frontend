@@ -1,0 +1,33 @@
+.movies {
+    padding: 80px 10px;
+}
+
+.movies__search {
+    margin-bottom: 50px;
+}
+
+.movies__divider {
+    margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+    .movies {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .movies__divider {
+        margin-bottom: 80px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .movies {
+        padding-top: 55px;
+        padding-bottom: 75px;
+    }
+
+    .movies__search {
+        margin-bottom: 70px;
+    }
+}

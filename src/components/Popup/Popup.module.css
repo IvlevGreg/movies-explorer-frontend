@@ -1,0 +1,50 @@
+.popup {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.3);
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup_opened {
+  opacity: 1;
+  visibility: visible;
+
+  transition: opacity 0.3s ease;
+}
+
+.popup__button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 35px;
+  height: 35px;
+  z-index: 100;
+
+  background-image: url("../../images/popupCrossIcon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__button {
+    right: 20px;
+    top: 20px;
+  }
+}
+
+
