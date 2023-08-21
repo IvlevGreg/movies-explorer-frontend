@@ -8,7 +8,7 @@ const TECHS_LIST = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB'
 
 export function Techs({ className }) {
   return (
-    <section className={cn(className, styles.techs)}>
+    <section className={cn(className, styles.techs)} id="technologies">
       <div className="main__content">
 
         <Heading size={2} className={styles.techs__title}>

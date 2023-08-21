@@ -9,7 +9,7 @@ import { Link } from '../../Link';
 
 export function AboutMe({ className }) {
   return (
-    <section className={cn(className, styles.about)}>
+    <section className={cn(className, styles.about)} id="student">
       <div className="main__content">
 
         <Heading size={2} className={styles.about__title}>Студент</Heading>
