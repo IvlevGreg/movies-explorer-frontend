@@ -8,7 +8,7 @@ export function PasswordController({ className, control, ...rest }) {
       name="password"
       control={control}
       rules={{ required: { value: true, message: REQUIRED_MESSAGE } }}
-      render={({ field }) => <Input {...field} {...rest} className={className} />}
+      render={({ field }) => <Input {...field} {...rest} type="password" className={className} />}
     />
   );
 }
