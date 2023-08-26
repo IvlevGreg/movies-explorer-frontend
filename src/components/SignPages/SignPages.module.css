@@ -1,103 +1,104 @@
 .page {
-    padding: 70px 30px 30px;
-    max-width: 456px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: calc(100vh - var(--header-height));
-    box-sizing: border-box;
+  padding: 70px 30px 30px;
+  max-width: 456px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - var(--header-height));
+  box-sizing: border-box;
 }
 
 .page_logo {
-    padding: 56px 30px 30px;
-    height: 100vh;
+  padding: 56px 30px 30px;
+  height: 100vh;
 }
 
 .page__title {
-    margin: 0 0 80px;
-    font-size: 24px;
-    font-weight: 500;
-    text-align: center;
+  margin: 0 0 80px;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .page__img {
-    width: 38px;
-    height: 38px;
-    margin-bottom: 50px;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 50px;
 }
 
 
 .form {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .form__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .form__container_size_20 {
-    gap: 20px;
+  gap: 20px;
 }
 
 .form__controllers {
-    justify-content: flex-start;
-    min-height: 257px;
+  justify-content: flex-start;
+  min-height: 257px;
 }
 
 .form__container_size_14 {
-    gap: 14px;
+  gap: 14px;
 }
 
 .form__container_size_24 {
-    gap: 24px;
+  gap: 24px;
 }
 
 .page__signin {
-    margin: 0;
-    color: #8B8B8B;
-    font-size: 12px;
-    font-weight: 400;
-    text-align: center;
+  margin: 0;
+  color: #8B8B8B;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
 }
 
 @media screen and (min-width: 512px) {
-    .page {
-        padding-top: 150px;
-        padding-bottom: 70px;
-        align-items: flex-start;
-    }
+  .page {
+    padding-top: 150px;
+    padding-bottom: 70px;
+    align-items: flex-start;
+  }
 
-    .page_logo {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
+  .page_logo {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
 
-    .page__title {
-        margin-bottom: 40px;
-    }
+  .page__title {
+    margin-bottom: 40px;
+  }
 
-    .page__img {
-        margin-bottom: 40px;
-    }
+  .page__img {
+    margin-bottom: 40px;
+  }
 }
 
 @media screen and (min-height: 912px) {
-    .page {
-        justify-content: center;
-    }
+  .page {
+    justify-content: center;
+  }
 
-    .page__form {
-        justify-content: flex-start;
-        gap: 70px;
-    }
+  .page__form {
+    justify-content: flex-start;
+    gap: 70px;
+  }
 
-    .form {
-        height: auto;
-        width: 100%;
-    }
+  .form {
+    height: auto;
+    width: 100%;
+  }
 }
 

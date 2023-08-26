@@ -7,8 +7,12 @@ class MainApiClass {
     this._otherCommonProps = otherCommonProps;
   }
 
-  static _parseJson(res) {
-    return res.ok ? res.json() : Promise.reject(res);
+  static async _parseJson(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    const mapedRes = await res.json();
+    throw new Error(mapedRes.message);
   }
 
   postSignUp({ password, email }) {
@@ -55,16 +59,16 @@ class MainApiClass {
     }).then(MainApiClass._parseJson);
   }
 
-  updateUserData({ email, password }) {
+  updateUserData({ email, name }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       ...this._otherCommonProps,
       body: JSON.stringify({
-        password,
         email,
+        name,
       }),
-    }).then(this._parseJson);
+    }).then(MainApiClass._parseJson);
   }
 
   getMovies() {
@@ -92,7 +96,7 @@ class MainApiClass {
       method: 'DELETE',
       headers: this._headers,
       ...this._otherCommonProps,
-    }).then(this._parseJson);
+    }).then(MainApiClass._parseJson);
   }
 }
 

@@ -26,10 +26,12 @@ module.exports = {
     'consistent-return': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
-    'no-useless-escape': 2,
-    'no-console': 'error',
     'react/jsx-props-no-spreading': 0,
     'import/prefer-default-export': 0,
+
+    'no-useless-escape': 2,
+    'no-console': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'max-len': ['warn', { code: 100 }],
     'jsx-a11y/label-has-associated-control': [2, {
       labelComponents: ['Label'],
