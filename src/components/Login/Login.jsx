@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
 import { PasswordController } from '../Controllers/PasswordController';
@@ -6,16 +8,33 @@ import { SignPages } from '../SignPages';
 import { Button } from '../Button';
 import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
+import { MainApi } from '../../utils/Api/MainApi';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+
+const DEFAULT_VALUES = { email: '', password: '' };
 
 export function Login({ className }) {
-  const { control, formState: { errors }, handleSubmit } = useForm({
-    defaultValues: {
-      email: '', password: '',
-    },
+  const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState(null);
+  const { setUserData } = useContext(CurrentUserContext);
+
+  const {
+    control, reset, formState: { errors }, handleSubmit,
+  } = useForm({
+    defaultValues: DEFAULT_VALUES,
   });
 
   // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => MainApi.postSignIn(data)
+    .then(() => MainApi.getUsersMe())
+    .catch(() => setFormErrors('Не удалось получить пользователя'))
+    .then((user) => {
+      navigate('/');
+      setUserData(user);
+      reset(DEFAULT_VALUES);
+    })
+    .catch(setFormErrors);
+
   const controllers = (
     <>
       <Label
@@ -49,7 +68,7 @@ export function Login({ className }) {
         Ещё не зарегистрированы?
         {' '}
         <Link
-          href="signup"
+          to="/signup"
           type="LinkRouter"
           color="blue"
           underline={false}
@@ -67,6 +86,7 @@ export function Login({ className }) {
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
       className={className}
+      formErrors={formErrors}
     />
   );
 }

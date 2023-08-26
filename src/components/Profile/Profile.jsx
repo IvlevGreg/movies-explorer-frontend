@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Profile.module.css';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -7,20 +8,39 @@ import { NameController } from '../Controllers/NameController';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { SignPages } from '../SignPages';
+import { MainApi } from '../../utils/Api/MainApi';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
 
 export function Profile({ className }) {
   const [isFormDisabled, setIsFormDisabled] = useState(true);
+  const [formErrors, setFormErrors] = useState(null);
+  const navigate = useNavigate();
+  const { userData, setUserData } = useContext(CurrentUserContext);
+
   const { control, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
-      name: 'Виталий', email: 'pochta@yandex.ru',
+      name: userData?.name || '', email: userData?.email || '',
     },
   });
 
   const onSubmit = (data) => {
-    setIsFormDisabled(true);
-    // eslint-disable-next-line no-console
-    console.log(data);
+    MainApi.updateUserData(data)
+      .then((newUserData) => {
+        setFormErrors(null);
+        setUserData(newUserData);
+        setIsFormDisabled(true);
+      }).catch((e) => {
+        setIsFormDisabled(false);
+        setFormErrors(e);
+        console.log(e);
+      });
   };
+
+  const handleLogOut = () => MainApi.postSignOut()
+    .then(() => {
+      navigate('/');
+      setUserData(null);
+    }).catch(setFormErrors);
 
   const controllers = (
     <>
@@ -57,6 +77,7 @@ export function Profile({ className }) {
         variant="text"
         type="button"
         size="m"
+        color={formErrors && 'red'}
         onClick={() => {
           if (isFormDisabled) {
             setIsFormDisabled(false);
@@ -72,8 +93,7 @@ export function Profile({ className }) {
         color="red"
         size="m"
         type="button"
-        onClick={() => {
-        }}
+        onClick={handleLogOut}
       >
         Выйти из аккаунта
       </Button>
@@ -82,12 +102,13 @@ export function Profile({ className }) {
 
   return (
     <SignPages
-      title="Рады видеть!"
+      title={userData?.name ? `Рады видеть, ${userData.name}!` : 'Рады видеть!'}
       controllers={controllers}
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
       className={className}
       isLogo={false}
+      formErrors={formErrors}
     />
   );
 }

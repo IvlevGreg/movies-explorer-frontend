@@ -80,5 +80,10 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .nav_auth_no {
+    flex: 0;
+    margin-left: auto;
+  }
 }
 

@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import styles from './SignPages.module.css';
 import logo from '../../images/logo.svg';
+import { FormErrorText } from '../FormErrorText';
 
 export function SignPages({
-  className, title, controllers, handleSubmit, actionChildren, isLogo = true,
+  className, title, controllers, formErrors, handleSubmit, actionChildren, isLogo = true,
 }) {
   return (
     <div className={cn(className, styles.page, { [styles.page_logo]: isLogo })}>
@@ -28,6 +29,11 @@ export function SignPages({
         </div>
 
         <div className={cn(styles.form__container, styles.form__container_size_14)}>
+          {formErrors && (
+          <FormErrorText>
+            {(formErrors.message || 'неизвестная ошибка')}
+          </FormErrorText>
+          ) }
           {actionChildren}
         </div>
       </form>

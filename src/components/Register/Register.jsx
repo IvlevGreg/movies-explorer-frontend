@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 import { Label } from '../Label';
 import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
@@ -7,16 +9,24 @@ import { SignPages } from '../SignPages';
 import { Button } from '../Button';
 import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
+import { MainApi } from '../../utils/Api/MainApi';
 
 export function Register({ className }) {
+  const [formErrors, setFormErrors] = useState(null);
+  const navigate = useNavigate();
   const { control, formState: { errors }, handleSubmit } = useForm({
     defaultValues: {
       name: '', email: '', password: '',
     },
   });
 
-  // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => MainApi.postSignUp(data)
+    .then(() => {
+      navigate('/signin');
+      // reset
+    })
+    .catch(setFormErrors);
+
   const controllers = (
     <>
       <Label
@@ -57,7 +67,7 @@ export function Register({ className }) {
         Уже зарегистрированы?
         {' '}
         <Link
-          href="signin"
+          to="/signin"
           type="LinkRouter"
           color="blue"
           underline={false}
@@ -75,6 +85,7 @@ export function Register({ className }) {
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
       className={className}
+      formErrors={formErrors}
     />
   );
 }

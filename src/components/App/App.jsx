@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 import { ProtectedRouteElement } from '../ProtectedRouteElement';
@@ -9,61 +10,88 @@ import { Login } from '../Login';
 import { Profile } from '../Profile';
 import { SavedMovies } from '../SavedMovies';
 import { Movies } from '../Movies';
+import { MainApi } from '../../utils/Api/MainApi';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
 
 export function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route
-          path="/"
-          element={(
-            <ProtectedRouteElement loggedIn>
-              <Header color="secondary" />
-              <Main />
-              <Footer />
-            </ProtectedRouteElement>
-)}
-        />
-        <Route
-          path="/movies"
-          element={(
-            <ProtectedRouteElement loggedIn>
-              <Header />
-              <Movies />
-              <Footer />
-            </ProtectedRouteElement>
-)}
-        />
-        <Route
-          path="/saved-movies"
-          element={(
-            <ProtectedRouteElement loggedIn>
-              <Header />
-              <SavedMovies />
-              <Footer />
-            </ProtectedRouteElement>
-)}
-        />
-        <Route
-          path="/profile"
-          element={(
-            <ProtectedRouteElement loggedIn>
-              <Header />
-              <Profile />
-            </ProtectedRouteElement>
-)}
-        />
+  const [userData, setUserData] = useState(null);
+  const [userStatus, setUserStatus] = useState('initial');
+  const userValue = useMemo(() => ({ userData, setUserData }), [userData]);
 
-        <Route
-          path="/signin"
-          element={(<Login />)}
-        />
-        <Route
-          path="/signup"
-          element={(<Register />)}
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </div>
+  useEffect(
+    () => {
+      setUserStatus('loading');
+      MainApi.getUsersMe().then((user) => {
+        setUserData(user);
+        setUserStatus('success');
+      }).catch((e) => {
+        setUserStatus('error');
+        // eslint-disable-next-line no-console
+        console.log(e);
+      });
+    },
+    [],
+  );
+  if (userStatus === 'loading' || userStatus === 'initial') {
+    return <h1>loading</h1>;
+  }
+
+  return (
+    <CurrentUserContext.Provider value={userValue}>
+
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <>
+                <Header loggedIn={!!userData} color="secondary" />
+                <Main />
+                <Footer />
+              </>
+          )}
+          />
+          <Route
+            path="/movies"
+            element={(
+              <ProtectedRouteElement loggedIn={!!userData}>
+                <Header />
+                <Movies />
+                <Footer />
+              </ProtectedRouteElement>
+          )}
+          />
+          <Route
+            path="/saved-movies"
+            element={(
+              <ProtectedRouteElement loggedIn={!!userData}>
+                <Header loggedIn={!!userData} />
+                <SavedMovies />
+                <Footer />
+              </ProtectedRouteElement>
+          )}
+          />
+          <Route
+            path="/profile"
+            element={(
+              <ProtectedRouteElement loggedIn={!!userData}>
+                <Header loggedIn={!!userData} />
+                <Profile />
+              </ProtectedRouteElement>
+          )}
+          />
+
+          <Route
+            path="/signin"
+            element={(<Login />)}
+          />
+          <Route
+            path="/signup"
+            element={(<Register />)}
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
