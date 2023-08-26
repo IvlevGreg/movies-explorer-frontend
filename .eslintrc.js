@@ -22,7 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'no-underscore-dangle': 0,
     'consistent-return': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
