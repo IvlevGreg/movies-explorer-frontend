@@ -17,7 +17,7 @@ export function Profile({ className }) {
   const navigate = useNavigate();
   const { userData, setUserData } = useContext(CurrentUserContext);
 
-  const { control, formState: { errors }, handleSubmit } = useForm({
+  const { control, formState: { errors, isDirty, isValid }, handleSubmit } = useForm({
     defaultValues: {
       name: userData?.name || '', email: userData?.email || '',
     },
@@ -32,6 +32,7 @@ export function Profile({ className }) {
       }).catch((e) => {
         setIsFormDisabled(false);
         setFormErrors(e);
+        // eslint-disable-next-line no-console
         console.log(e);
       });
   };
@@ -78,6 +79,7 @@ export function Profile({ className }) {
         type="button"
         size="m"
         color={formErrors && 'red'}
+        disabled={(!isFormDisabled && !isDirty) || !isValid}
         onClick={() => {
           if (isFormDisabled) {
             setIsFormDisabled(false);

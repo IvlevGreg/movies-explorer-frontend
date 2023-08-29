@@ -14,7 +14,7 @@ import { MainApi } from '../../utils/Api/MainApi';
 export function Register({ className }) {
   const [formErrors, setFormErrors] = useState(null);
   const navigate = useNavigate();
-  const { control, formState: { errors }, handleSubmit } = useForm({
+  const { control, formState: { errors, isSubmitted, isValid }, handleSubmit } = useForm({
     defaultValues: {
       name: '', email: '', password: '',
     },
@@ -55,6 +55,7 @@ export function Register({ className }) {
   const actionChildren = (
     <>
       <Button
+        disabled={isSubmitted && !isValid}
         type="submit"
         variant="primary"
         color="blue"

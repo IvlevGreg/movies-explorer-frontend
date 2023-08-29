@@ -19,22 +19,21 @@ export function Login({ className }) {
   const { setUserData } = useContext(CurrentUserContext);
 
   const {
-    control, reset, formState: { errors }, handleSubmit,
+    control, reset, formState: { errors, isSubmitted, isValid }, handleSubmit,
   } = useForm({
     defaultValues: DEFAULT_VALUES,
   });
 
   // eslint-disable-next-line no-console
   const onSubmit = (data) => MainApi.postSignIn(data)
-    .then(() => MainApi.getUsersMe())
-    .catch(() => setFormErrors('Не удалось получить пользователя'))
-    .then((user) => {
-      navigate('/');
-      setUserData(user);
-      reset(DEFAULT_VALUES);
-    })
+    .then(() => MainApi.getUsersMe()
+      .then((user) => {
+        navigate('/movies');
+        setUserData(user);
+        reset(DEFAULT_VALUES);
+      })
+      .catch(() => setFormErrors('Не удалось получить пользователя')))
     .catch(setFormErrors);
-
   const controllers = (
     <>
       <Label
@@ -60,6 +59,7 @@ export function Login({ className }) {
         variant="primary"
         color="blue"
         size="l"
+        disabled={isSubmitted && !isValid}
         block
       >
         Войти

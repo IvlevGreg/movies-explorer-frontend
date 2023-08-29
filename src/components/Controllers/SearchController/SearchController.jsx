@@ -7,7 +7,7 @@ export function SearchController({ className, control, ...rest }) {
     <Controller
       name="search"
       control={control}
-      rules={{ required: { value: true, message: REQUIRED_WORD_MESSAGE } }}
+      rules={{ required: { value: true, message: REQUIRED_WORD_MESSAGE }, max: 40 }}
       render={({ field }) => <Input {...field} {...rest} className={className} />}
     />
   );
