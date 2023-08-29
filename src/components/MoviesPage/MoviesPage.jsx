@@ -19,9 +19,7 @@ export function MoviesPage({
     filteredMovies,
     handleSubmit,
   } = useFilterMovies(movies, initialFormData, localStorageKey);
-  console.log(filteredMovies);
-  // console.log('filteredMovies', filteredMovies);
-  // console.log(movies);
+
   return (
     <main>
       <div className={cn(className, styles.movies, 'main__content')}>

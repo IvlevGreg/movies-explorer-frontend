@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Label } from '../Label';
 import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
@@ -23,7 +23,6 @@ export function Register({ className }) {
   const onSubmit = (data) => MainApi.postSignUp(data)
     .then(() => {
       navigate('/signin');
-      // reset
     })
     .catch(setFormErrors);
 

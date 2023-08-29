@@ -17,6 +17,7 @@ export function MoviesCardSaved({
   const onClickRemoveLike = () => {
     MainApi.changeLikeCardStatus(movie, true)
       .then(() => setIsLiked((state) => !state))
+      // eslint-disable-next-line no-console
       .catch(console.log);
   };
   // eslint-disable-next-line no-console

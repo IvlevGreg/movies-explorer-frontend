@@ -3,6 +3,7 @@ import { forwardRef } from 'react';
 import styles from './Input.module.css';
 
 export const Input = forwardRef(({
+  // eslint-disable-next-line no-unused-vars
   className, innerRef, borderRadius = 8, ...rest
 }, ref) => {
   const classNames = cn(className, styles.input, {

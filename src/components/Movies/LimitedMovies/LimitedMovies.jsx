@@ -9,7 +9,7 @@ export function LimitedMovies({
     callback: handleMoreMovie,
     isAllMoviesShow,
   } = useGetLimitedMovies(movies, limits);
-  console.log(limitMovies);
+
   return (
     <MoviesCardList
       movies={limitMovies}

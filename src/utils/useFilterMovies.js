@@ -14,9 +14,9 @@ export const useFilterMovies = (movies, { search, filter }, localStorageKey) => 
       )]);
   };
 
-  const handleSubmit = ({ search, filter }) => {
-    localStorage.setItem(localStorageKey, JSON.stringify({ search, filter }));
-    filterMovies(search, filter);
+  const handleSubmit = ({ searchStr, isFilter }) => {
+    localStorage.setItem(localStorageKey, JSON.stringify({ searchStr, isFilter }));
+    filterMovies(searchStr, isFilter);
   };
 
   useEffect(() => {

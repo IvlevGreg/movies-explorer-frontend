@@ -1,5 +1,4 @@
 import { Controller } from 'react-hook-form';
-import { string } from 'yup';
 import { REQUIRED_MESSAGE } from '../../../utils/validation';
 import { Input } from '../../Input';
 
