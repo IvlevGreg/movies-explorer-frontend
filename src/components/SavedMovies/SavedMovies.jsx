@@ -1,18 +1,8 @@
 import { useEffect, useState } from 'react';
 import { MoviesPage } from '../MoviesPage';
 import { MoviesCardSaved } from '../MoviesCardSaved';
-import { MoviesApi } from '../../utils/Api/MoviesApi';
 import { MainApi } from '../../utils/Api/MainApi';
-import { mapMovies } from '../Movies/Movies.lib';
-import { MoviesCardMain } from '../MoviesCardMain';
-
-const MOVIES = [...Array(3)].map((_, i) => ({
-  link: 'https://catherineasquithgallery.com/uploads/posts/'
-    + '2021-02/1614265048_4-p-cherno-belii-fon-peizazh-8.jpg',
-  title: '33 слова о дизайне',
-  duration: '1ч 47м',
-  isInitialLiked: i % 4 === 0,
-}));
+import { normalizedLikedMovies } from '../../utils/normalizedLikedMovies';
 
 export function SavedMovies({ className }) {
   const [movies, setMovies] = useState(null);
@@ -24,7 +14,7 @@ export function SavedMovies({ className }) {
     setMoviesStatus('loading');
     MainApi.getMovies()
       .then((likedMovie) => {
-        setMovies(likedMovie);
+        setMovies(normalizedLikedMovies(likedMovie));
         setMoviesStatus('success');
       }).catch((e) => {
         setMoviesStatus('error');

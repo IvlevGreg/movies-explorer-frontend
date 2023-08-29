@@ -1,12 +1,25 @@
 import cn from 'classnames';
+import { useState } from 'react';
 import styles from './MoviesCardSaved.module.css';
 import { Button } from '../Button';
+import { MainApi } from '../../utils/Api/MainApi';
 
 export function MoviesCardSaved({
-  className, link, alt, title, duration,
+  className, movie,
 }) {
+  const [isLiked, setIsLiked] = useState(true);
+
+  if (!isLiked) return;
+  const {
+    link, alt, title, duration,
+  } = movie;
+
+  const onClickRemoveLike = () => {
+    MainApi.changeLikeCardStatus(movie, true)
+      .then(() => setIsLiked((state) => !state))
+      .catch(console.log);
+  };
   // eslint-disable-next-line no-console
-  const onClickRemoveLike = () => console.log('removed');
   return (
     <li className={cn(className, styles.movie)}>
       <Button

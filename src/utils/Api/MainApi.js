@@ -8,11 +8,12 @@ class MainApiClass {
   }
 
   static async _parseJson(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    const mapedRes = await res.json();
-    throw new Error(mapedRes.message);
+    return res.ok && res?.json ? res.json() : Promise.reject(res);
+    //   if (res.ok) {
+    //     return res.json();
+    //   }
+    //   const mapedRes = await res.json();
+    //   throw new Error(mapedRes.message);
   }
 
   postSignUp({ password, email }) {
@@ -79,7 +80,7 @@ class MainApiClass {
     }).then(MainApiClass._parseJson);
   }
 
-  postMovie(movie) {
+  _postMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: this._headers,
@@ -91,12 +92,16 @@ class MainApiClass {
     }).then(MainApiClass._parseJson);
   }
 
-  deleteMovieById(id) {
+  _deleteMovieById(id) {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: 'DELETE',
       headers: this._headers,
       ...this._otherCommonProps,
     }).then(MainApiClass._parseJson);
+  }
+
+  changeLikeCardStatus(movie, isLiked) {
+    return isLiked ? this._deleteMovieById(movie.movieId) : this._postMovie(movie);
   }
 }
 

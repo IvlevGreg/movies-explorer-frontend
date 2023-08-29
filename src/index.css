@@ -79,6 +79,10 @@ body {
   }
 }
 
+.h-text-center {
+  text-align: center;
+}
+
 /*// off*/
 /*body > iframe {*/
 /*    display: none;*/
