@@ -2,7 +2,7 @@ import cn from 'classnames';
 import styles from './Button.module.css';
 
 export function Button({
-  className, children, variant = 'primary', color = 'Blue', size = 'm', block, ...rest
+  className, children, variant = 'primary', disabled, color = 'Blue', size = 'm', block, ...rest
 }) {
   const classNames = cn(
     className,
@@ -27,7 +27,7 @@ export function Button({
   return (
 
   // eslint-disable-next-line react/button-has-type
-    <button {...rest} className={classNames}>
+    <button {...rest} className={classNames} disabled={disabled}>
       {children}
     </button>
   );

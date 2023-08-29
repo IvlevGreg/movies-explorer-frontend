@@ -64,4 +64,9 @@
   opacity: .6;
 }
 
+.button:disabled {
+  opacity: .4;
+  cursor: initial;
+}
+
 
