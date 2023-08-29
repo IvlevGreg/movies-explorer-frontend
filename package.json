@@ -1,6 +1,6 @@
 {
   "name": "movies-explorer-frontend",
-  "homepage": "https://ivlevgreg.github.io/mesto-react",
+  "homepage": "https://ivlevgreg.github.io/movies-explorer-frontend/",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
