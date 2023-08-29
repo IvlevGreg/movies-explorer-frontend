@@ -1,5 +1,5 @@
 import { useGetLimitedMovies } from '../../../utils/useGetLimitedMovies';
-import { MoviesPage } from '../../MoviesPage';
+import { MoviesCardList } from '../../MoviesCardList';
 
 export function LimitedMovies({
   className, movies, CardComponent, limits,
@@ -9,13 +9,13 @@ export function LimitedMovies({
     callback: handleMoreMovie,
     isAllMoviesShow,
   } = useGetLimitedMovies(movies, limits);
-
+  console.log(limitMovies);
   return (
-    <MoviesPage
+    <MoviesCardList
       movies={limitMovies}
+      className={className}
       handleMoreMovie={handleMoreMovie}
       isAllMoviesShow={isAllMoviesShow}
-      className={className}
       CardComponent={CardComponent}
     />
   );

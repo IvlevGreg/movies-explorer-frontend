@@ -6,15 +6,12 @@ import { SearchController } from '../Controllers/SearchController';
 import { Button } from '../Button';
 import { FilterCheckboxController } from '../Controllers/FilterCheckboxController';
 
-export function SearchForm({ className }) {
+export function SearchForm({ className, onSubmit, defaultValues }) {
   const { control, formState: { errors }, handleSubmit } = useForm({
-    defaultValues: {
-      search: '', filter: false,
-    },
+    defaultValues,
   });
 
   // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
   return (
     <form
       className={cn(className, styles.form)}

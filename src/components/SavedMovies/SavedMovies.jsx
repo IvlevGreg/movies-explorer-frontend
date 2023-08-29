@@ -25,7 +25,12 @@ export function SavedMovies({ className }) {
   const mapMoviesComponent = {
     initial: <h1>loading</h1>,
     loading: <h1>loading</h1>,
-    success: <MoviesPage movies={movies} CardComponent={MoviesCardSaved} className={className} />,
+    success: <MoviesPage
+      movies={movies}
+      localStorageKey="savedMovies"
+      CardComponent={MoviesCardSaved}
+      className={className}
+    />,
     error: (
       <>
         <h1>упс... произошла ошибка</h1>

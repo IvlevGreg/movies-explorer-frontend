@@ -4,8 +4,6 @@ import { MoviesCardMain } from '../MoviesCardMain';
 import { MoviesApi } from '../../utils/Api/MoviesApi';
 import { mapMovies } from '../../utils/mapMovies';
 import { MainApi } from '../../utils/Api/MainApi';
-import { useGetLimitedMovies } from '../../utils/useGetLimitedMovies';
-import { LimitedMovies } from './LimitedMovies';
 
 const LIMITS = { mobile: 4, tablet: 8, desktop: 12 };
 
@@ -30,7 +28,8 @@ export function Movies({ className }) {
   const mapMoviesComponent = {
     initial: <h1>loading</h1>,
     loading: <h1>loading</h1>,
-    success: <LimitedMovies
+    success: <MoviesPage
+      localStorageKey="movies"
       movies={movies}
       limits={LIMITS}
       className={className}

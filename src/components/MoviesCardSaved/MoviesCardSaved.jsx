@@ -11,7 +11,7 @@ export function MoviesCardSaved({
 
   if (!isLiked) return;
   const {
-    link, alt, title, duration,
+    link, alt, title, normalizedDuration,
   } = movie;
 
   const onClickRemoveLike = () => {
@@ -33,7 +33,7 @@ export function MoviesCardSaved({
           <p className={styles.movie__title}>{title}</p>
 
           <p className={styles.movie__duration}>
-            {duration}
+            {normalizedDuration}
           </p>
         </div>
       </Button>

@@ -6,6 +6,7 @@ export const Switcher = forwardRef(({ className, ...rest }, ref) => (
   <label className={cn(className, styles.switcher)}>
     <input
       {...rest}
+      checked={rest.value}
       ref={ref}
       type="checkbox"
       className={styles.switcher__input}

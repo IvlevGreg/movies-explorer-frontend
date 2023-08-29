@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGetCurrentDevice, useIsDesktop } from './useDevices';
+import { useGetCurrentDevice } from './useDevices';
 
 export const useGetLimitedMovies = (movies, initialLimits) => {
   const [limitMovies, setLimitMovies] = useState([]);
@@ -14,7 +14,7 @@ export const useGetLimitedMovies = (movies, initialLimits) => {
 
   useEffect(() => {
     setLimitMovies(() => movies.slice(0, initialLimits[currentDevice]));
-  }, [currentDevice]);
+  }, [currentDevice, movies]);
 
   useEffect(() => {
     setLimitMovies(() => movies.slice(0, limits[currentDevice]));

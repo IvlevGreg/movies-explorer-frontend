@@ -3,12 +3,15 @@ import { normalizeDuration } from './normalizeDuration';
 export const normalizedLikedMovies = (
   movies,
 ) => movies?.map(({
-  nameRU, duration, image, _id, movieId,
+  nameRU, duration, image, _id, movieId, nameEN,
 }) => ({
   link: image,
   title: nameRU,
-  duration: normalizeDuration(duration),
+  normalizedDuration: normalizeDuration(duration),
 
+  duration,
+  nameRU,
+  nameEN,
   movieId,
   _id,
 }));
