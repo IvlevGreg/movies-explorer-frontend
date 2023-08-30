@@ -106,7 +106,7 @@ class MainApiClass {
 }
 
 export const MainApi = new MainApiClass({
-  baseUrl: IS_DEVELOPMENT ? 'http://localhost:4000' : 'https://api.blogogram.nomoreparties.sbs',
+  baseUrl: IS_DEVELOPMENT ? 'http://localhost:4000' : 'https://api.greg.nomoreparties.co',
   headers: {
     'Content-Type': 'application/json',
   },
