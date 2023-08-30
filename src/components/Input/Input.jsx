@@ -7,8 +7,7 @@ export const Input = forwardRef(({
   className, innerRef, borderRadius = 8, ...rest
 }, ref) => {
   const classNames = cn(className, styles.input, {
-    [styles.input_radius_40]: borderRadius === 40,
-    [styles.input_radius_8]: borderRadius === 8,
+    [styles.input_radius_40]: borderRadius === 40, [styles.input_radius_8]: borderRadius === 8,
   });
 
   return <input {...rest} ref={ref} className={classNames} />;
