@@ -31,7 +31,7 @@ export function SignPages({
         <div className={cn(styles.form__container, styles.form__container_size_14)}>
           {formErrors && (
           <FormErrorText>
-            {(formErrors.message || 'неизвестная ошибка')}
+            {(formErrors.message)}
           </FormErrorText>
           ) }
           {actionChildren}

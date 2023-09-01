@@ -1,4 +1,5 @@
 import { IS_DEVELOPMENT } from '../IS_DEVELOPMENT';
+import { mapServerErrors } from '../mapServerErrors';
 
 class MainApiClass {
   constructor({ baseUrl, headers, otherCommonProps }) {
@@ -10,8 +11,8 @@ class MainApiClass {
   static async _parseJson(res) {
     if (res.ok && res?.json) return res.json();
 
-    const { message } = await res.json();
-    throw new Error(message);
+    const error = await res.json();
+    throw new Error(mapServerErrors(error));
   }
 
   postSignUp({ password, email }) {
