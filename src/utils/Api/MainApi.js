@@ -8,12 +8,10 @@ class MainApiClass {
   }
 
   static async _parseJson(res) {
-    return res.ok && res?.json ? res.json() : Promise.reject(res);
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   const mapedRes = await res.json();
-    //   throw new Error(mapedRes.message);
+    if (res.ok && res?.json) return res.json();
+
+    const { message } = await res.json();
+    throw new Error(message);
   }
 
   postSignUp({ password, email }) {
