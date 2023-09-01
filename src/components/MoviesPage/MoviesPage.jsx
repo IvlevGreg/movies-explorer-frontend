@@ -13,11 +13,12 @@ const FIELDS = {
 export function MoviesPage({
   className, movies, CardComponent, limits, localStorageKey,
 }) {
-  const initialFormData = JSON.parse(localStorage.getItem(localStorageKey)) || FIELDS;
+  const localStorageData = JSON.parse(localStorage.getItem(localStorageKey));
+  const isLocalStorageValid = localStorageData?.search && localStorageData?.filter !== undefined;
+  const initialFormData = (isLocalStorageValid && localStorageData) || FIELDS;
 
   const {
-    filteredMovies,
-    handleSubmit,
+    filteredMovies, handleSubmit,
   } = useFilterMovies(movies, initialFormData, localStorageKey);
 
   return (
@@ -35,13 +36,12 @@ export function MoviesPage({
             CardComponent={CardComponent}
             limits={limits}
           />
-        )
-          : (
-            <MoviesCardList
-              movies={filteredMovies}
-              CardComponent={CardComponent}
-            />
-          )}
+        ) : (
+          <MoviesCardList
+            movies={filteredMovies}
+            CardComponent={CardComponent}
+          />
+        )}
       </div>
     </main>
   );
