@@ -11,7 +11,6 @@ export function SearchForm({ className, onSubmit, defaultValues }) {
     defaultValues,
   });
 
-  // eslint-disable-next-line no-console
   return (
     <form
       className={cn(className, styles.form)}
