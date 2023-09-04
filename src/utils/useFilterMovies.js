@@ -6,16 +6,20 @@ export const useFilterMovies = (movies, { search, filter }, localStorageKey) => 
   const filterByDuration = (movie, isFilter) => !isFilter || movie.duration <= 40;
 
   const filterMovies = (searchStr, isFilter) => {
+    const lowerSearchStr = searchStr?.toLowerCase();
+
     setFilteredMovies(() => [
       ...movies.filter(
         (movie) => (
-          movie.nameRU.includes(searchStr) || movie.nameEN.includes(searchStr))
+          movie.nameRU.toLowerCase().includes(lowerSearchStr)
+            || movie.nameEN.toLowerCase().includes(lowerSearchStr))
           && filterByDuration(movie, isFilter),
       )]);
   };
 
-  const handleSubmit = ({ searchStr, isFilter }) => {
+  const handleSubmit = ({ search: searchStr, filter: isFilter }) => {
     localStorage.setItem(localStorageKey, JSON.stringify({ searchStr, isFilter }));
+
     filterMovies(searchStr, isFilter);
   };
 
