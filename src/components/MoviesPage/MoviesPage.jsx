@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import styles from './MoviesPage.module.css';
 import { MoviesCardList } from '../MoviesCardList';
-import { SearchForm } from '../SearchForm';
 import { Divider } from '../Divider';
 import { useFilterMovies } from '../../utils/useFilterMovies';
 import { LimitedMovies } from '../Movies/LimitedMovies';
+import { SearchForm } from '../SearchForm';
 
 const FIELDS = {
   search: '', filter: false,
@@ -14,8 +14,7 @@ export function MoviesPage({
   className, movies, CardComponent, limits, localStorageKey,
 }) {
   const localStorageData = JSON.parse(localStorage.getItem(localStorageKey));
-  const isLocalStorageValid = localStorageData?.search && localStorageData?.filter !== undefined;
-  const initialFormData = (isLocalStorageValid && localStorageData) || FIELDS;
+  const initialFormData = { ...FIELDS, ...localStorageData };
 
   const {
     filteredMovies, handleSubmit,
