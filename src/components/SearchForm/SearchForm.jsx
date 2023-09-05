@@ -1,15 +1,26 @@
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
 import styles from './SearchForm.module.css';
 import { Label } from '../Label';
 import { SearchController } from '../Controllers/SearchController';
 import { Button } from '../Button';
 import { FilterCheckboxController } from '../Controllers/FilterCheckboxController';
+import { schemaSearchForm } from '../../utils/validation';
 
 export function SearchForm({ className, onSubmit, defaultValues }) {
-  const { control, formState: { errors }, handleSubmit } = useForm({
+  const {
+    control, watch, formState: { errors }, handleSubmit,
+  } = useForm({
     defaultValues,
+    resolver: yupResolver(schemaSearchForm),
   });
+
+  useEffect(() => {
+    const subscription = watch(handleSubmit(onSubmit));
+    return () => subscription.unsubscribe();
+  }, [handleSubmit, watch]);
 
   return (
     <form

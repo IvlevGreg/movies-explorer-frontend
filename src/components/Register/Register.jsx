@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Label } from '../Label';
 import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
@@ -10,6 +11,7 @@ import { Button } from '../Button';
 import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
 import { MainApi } from '../../utils/Api/MainApi';
+import { schemaSignUpForm } from '../../utils/validation';
 
 export function Register({ className }) {
   const [formErrors, setFormErrors] = useState(null);
@@ -18,6 +20,7 @@ export function Register({ className }) {
     defaultValues: {
       name: '', email: '', password: '',
     },
+    resolver: yupResolver(schemaSignUpForm),
   });
 
   const onSubmit = (data) => MainApi.postSignUp(data)

@@ -111,6 +111,5 @@ export const MainApi = new MainApiClass({
   },
   otherCommonProps: {
     credentials: 'include',
-    mode: 'cors',
   },
 });

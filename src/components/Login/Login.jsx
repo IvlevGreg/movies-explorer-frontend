@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
 import { PasswordController } from '../Controllers/PasswordController';
@@ -10,6 +11,7 @@ import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
 import { MainApi } from '../../utils/Api/MainApi';
 import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+import { schemaLoginForm } from '../../utils/validation';
 
 const DEFAULT_VALUES = { email: '', password: '' };
 
@@ -22,6 +24,7 @@ export function Login({ className }) {
     control, reset, formState: { errors, isSubmitted, isValid }, handleSubmit,
   } = useForm({
     defaultValues: DEFAULT_VALUES,
+    resolver: yupResolver(schemaLoginForm),
   });
 
   // eslint-disable-next-line no-console

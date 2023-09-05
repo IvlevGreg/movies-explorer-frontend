@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './Profile.module.css';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -10,6 +11,7 @@ import { Divider } from '../Divider';
 import { SignPages } from '../SignPages';
 import { MainApi } from '../../utils/Api/MainApi';
 import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+import { schemaProfileForm } from '../../utils/validation';
 
 export function Profile({ className }) {
   const [isFormDisabled, setIsFormDisabled] = useState(true);
@@ -21,6 +23,7 @@ export function Profile({ className }) {
     defaultValues: {
       name: userData?.name || '', email: userData?.email || '',
     },
+    resolver: yupResolver(schemaProfileForm),
   });
 
   const onSubmit = (data) => {
