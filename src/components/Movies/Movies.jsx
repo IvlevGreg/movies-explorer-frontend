@@ -4,8 +4,7 @@ import { MoviesCardMain } from '../MoviesCardMain';
 import { MoviesApi } from '../../utils/Api/MoviesApi';
 import { mapMovies } from '../../utils/mapMovies';
 import { MainApi } from '../../utils/Api/MainApi';
-
-const LIMITS = { mobile: 4, tablet: 8, desktop: 12 };
+import { MOVIES_SCREEN_LIMITS } from '../../utils/constants/MOVIES_SCREEN_LIMITS';
 
 export function Movies({ className }) {
   const [movies, setMovies] = useState([]);
@@ -31,7 +30,7 @@ export function Movies({ className }) {
     success: <MoviesPage
       localStorageKey="movies"
       movies={movies}
-      limits={LIMITS}
+      limits={MOVIES_SCREEN_LIMITS}
       className={className}
       CardComponent={MoviesCardMain}
     />,

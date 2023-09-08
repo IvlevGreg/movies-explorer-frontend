@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { SHORT_MOVIE_DURATION_MINUTES } from './constants/SHORT_MOVIE_DURATION_MINUTES';
 
 export const useFilterMovies = (movies, { search, filter }, localStorageKey) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
 
-  const filterByDuration = (movie, isFilter) => !isFilter || movie.duration <= 40;
+  const filterByDuration = (movie, isFilter) => !isFilter
+    || movie.duration <= SHORT_MOVIE_DURATION_MINUTES;
 
   const filterMovies = (searchStr, isFilter) => {
     const lowerSearchStr = searchStr?.toLowerCase();

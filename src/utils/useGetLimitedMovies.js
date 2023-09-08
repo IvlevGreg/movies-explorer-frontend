@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useGetCurrentDevice } from './useDevices';
 
+const FIRST_MOVIES_ARRAY_ELEMENT = 0;
+
 export const useGetLimitedMovies = (movies, initialLimits) => {
   const [limitMovies, setLimitMovies] = useState([]);
   // const { mobileLimitInitial, desktopLimitInitial, tabletLimitInitial } = limits;
@@ -13,11 +15,11 @@ export const useGetLimitedMovies = (movies, initialLimits) => {
   const [isAllMoviesShow, setIsAllMoviesShow] = useState(shouldStopLoadNewMovie);
 
   useEffect(() => {
-    setLimitMovies(() => movies.slice(0, initialLimits[currentDevice]));
+    setLimitMovies(() => movies.slice(FIRST_MOVIES_ARRAY_ELEMENT, initialLimits[currentDevice]));
   }, [currentDevice, movies]);
 
   useEffect(() => {
-    setLimitMovies(() => movies.slice(0, limits[currentDevice]));
+    setLimitMovies(() => movies.slice(FIRST_MOVIES_ARRAY_ELEMENT, limits[currentDevice]));
   }, [limits]);
 
   useEffect(() => {
