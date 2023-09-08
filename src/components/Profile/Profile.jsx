@@ -42,6 +42,9 @@ export function Profile({ className }) {
 
   const handleLogOut = () => MainApi.postSignOut()
     .then(() => {
+      localStorage.setItem('savedMovies', JSON.stringify(''));
+      localStorage.setItem('movies', JSON.stringify(''));
+
       navigate('/');
       setUserData(null);
     }).catch(setFormErrors);
