@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { joiResolver } from '@hookform/resolvers/joi';
 import styles from './Profile.module.css';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -23,7 +23,7 @@ export function Profile({ className }) {
     defaultValues: {
       name: userData?.name || '', email: userData?.email || '',
     },
-    resolver: yupResolver(schemaProfileForm),
+    resolver: joiResolver(schemaProfileForm),
   });
 
   const onSubmit = (data) => {

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { joiResolver } from '@hookform/resolvers/joi';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
 import { PasswordController } from '../Controllers/PasswordController';
@@ -24,7 +24,7 @@ export function Login({ className }) {
     control, reset, formState: { errors, isSubmitted, isValid }, handleSubmit,
   } = useForm({
     defaultValues: DEFAULT_VALUES,
-    resolver: yupResolver(schemaLoginForm),
+    resolver: joiResolver(schemaLoginForm),
   });
 
   // eslint-disable-next-line no-console

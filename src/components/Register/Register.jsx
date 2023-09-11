@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { joiResolver } from '@hookform/resolvers/joi';
 import { Label } from '../Label';
 import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
@@ -20,7 +20,7 @@ export function Register({ className }) {
     defaultValues: {
       name: '', email: '', password: '',
     },
-    resolver: yupResolver(schemaSignUpForm),
+    resolver: joiResolver(schemaSignUpForm),
   });
 
   const onSubmit = (data) => MainApi.postSignUp(data)

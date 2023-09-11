@@ -1,4 +1,5 @@
-import * as yup from 'yup';
+import Joi from 'joi';
+import validator from 'validator';
 
 export const REQUIRED_MESSAGE = 'Поле обязательно';
 export const REQUIRED_WORD_MESSAGE = 'Нужно ввести ключевое слов';
@@ -17,35 +18,52 @@ export const MIN_LENGTH_NAME_MESSAGE = 'Минимальная длина име
 export const MIN_LENGTH_NAME = 2;
 export const MAX_LENGTH_SEARCH_MESSAGE = 'Максимальная длина фильма для поиска 40 символов';
 
-const emailFiled = yup.string().required(REQUIRED_MESSAGE).email(INCORRECT_EMAIL_MESSAGE);
-const nameFiled = yup
-  .string()
-  .required(REQUIRED_MESSAGE)
-  .min(MIN_LENGTH_NAME, MIN_LENGTH_NAME_MESSAGE).max(MAX_LENGTH_NAME, MAX_LENGTH_NAME_MESSAGE);
-const passwordFiled = yup
-  .string()
-  .required(REQUIRED_MESSAGE)
-  .min(MIN_LENGTH_PASSWORD, MIN_LENGTH_PASSWORD_MESSAGE)
-  .max(MAX_LENGTH_PASSWORD, MAX_LENGTH_PASSWORD_MESSAGE);
-// const searchFiled =
-// yup.string().required(REQUIRED_WORD_MESSAGE).max(40, MAX_LENGTH_SEARCH_MESSAGE);
+const customMethodEmail = (value, helpers) => (!validator.isEmail(value) ? helpers.error('any.invalid') : value);
 
-export const schemaSearchForm = yup
+const emailFiled = Joi.string()
+  .custom(customMethodEmail)
+  .message(INCORRECT_EMAIL_MESSAGE);
+
+const nameFiled = Joi
+  .string()
+  .required()
+  .min(MIN_LENGTH_NAME)
+  .max(MAX_LENGTH_NAME)
+  .message({
+    'string.required': REQUIRED_MESSAGE,
+    'string.min': MIN_LENGTH_NAME_MESSAGE,
+    'string.max': MAX_LENGTH_NAME_MESSAGE,
+  });
+
+const passwordFiled = Joi
+  .string()
+  .required()
+  .min(MIN_LENGTH_PASSWORD)
+  .max(MAX_LENGTH_PASSWORD)
+  .message({
+    'string.required': REQUIRED_MESSAGE,
+    'string.min': MIN_LENGTH_PASSWORD_MESSAGE,
+    'string.max': MAX_LENGTH_PASSWORD_MESSAGE,
+  });
+// const searchFiled =
+// Joi.string().required(REQUIRED_WORD_MESSAGE).max(40, MAX_LENGTH_SEARCH_MESSAGE);
+
+export const schemaSearchForm = Joi
   .object({
     // search: searchFiled,
   });
 
-export const schemaLoginForm = yup
+export const schemaLoginForm = Joi
   .object({
     email: emailFiled, password: passwordFiled,
   });
 
-export const schemaSignUpForm = yup
+export const schemaSignUpForm = Joi
   .object({
     email: emailFiled, password: passwordFiled, name: nameFiled,
   });
 
-export const schemaProfileForm = yup
+export const schemaProfileForm = Joi
   .object({
     email: emailFiled, name: nameFiled,
   });

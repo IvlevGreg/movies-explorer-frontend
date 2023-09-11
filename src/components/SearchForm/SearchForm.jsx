@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { joiResolver } from '@hookform/resolvers/joi';
 import { useEffect } from 'react';
 import styles from './SearchForm.module.css';
 import { Label } from '../Label';
@@ -14,7 +14,7 @@ export function SearchForm({ className, onSubmit, defaultValues }) {
     control, watch, formState: { errors }, handleSubmit,
   } = useForm({
     defaultValues,
-    resolver: yupResolver(schemaSearchForm),
+    resolver: joiResolver(schemaSearchForm),
   });
 
   useEffect(() => {
