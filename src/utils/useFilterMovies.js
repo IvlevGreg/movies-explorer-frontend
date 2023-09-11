@@ -20,7 +20,7 @@ export const useFilterMovies = (movies, { search, filter }, localStorageKey) => 
   };
 
   const handleSubmit = ({ search: searchStr, filter: isFilter }) => {
-    localStorage.setItem(localStorageKey, JSON.stringify({ searchStr, isFilter }));
+    localStorage.setItem(localStorageKey, JSON.stringify({ search: searchStr, filter: isFilter }));
 
     filterMovies(searchStr, isFilter);
   };
