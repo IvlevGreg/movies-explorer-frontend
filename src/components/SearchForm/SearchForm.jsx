@@ -17,10 +17,10 @@ export function SearchForm({ className, onSubmit, defaultValues }) {
     resolver: yupResolver(schemaSearchForm),
   });
 
-  useEffect(() => {
-    const subscription = watch(handleSubmit(onSubmit));
-    return () => subscription.unsubscribe();
-  }, [handleSubmit, watch]);
+  // useEffect(() => {
+  //   const subscription = watch(handleSubmit(onSubmit));
+  //   return () => subscription.unsubscribe();
+  // }, [handleSubmit, watch]);
 
   return (
     <form
