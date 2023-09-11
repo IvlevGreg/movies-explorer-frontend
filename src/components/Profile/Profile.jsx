@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { joiResolver } from '@hookform/resolvers/joi';
 import styles from './Profile.module.css';
@@ -16,18 +16,29 @@ import { schemaProfileForm } from '../../utils/validation';
 export function Profile({ className }) {
   const [isFormDisabled, setIsFormDisabled] = useState(true);
   const [formErrors, setFormErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const { userData, setUserData } = useContext(CurrentUserContext);
 
-  const { control, formState: { errors, isDirty, isValid }, handleSubmit } = useForm({
+  const {
+    control, watch, formState: { errors, isDirty, isValid }, handleSubmit,
+  } = useForm({
     defaultValues: {
       name: userData?.name || '', email: userData?.email || '',
     },
     resolver: joiResolver(schemaProfileForm),
   });
 
-  const onSubmit = (data) => {
-    MainApi.updateUserData(data)
+  useEffect(() => {
+    const subscription = watch(() => setFormErrors(null));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+
+    return MainApi.updateUserData(data)
       .then((newUserData) => {
         setFormErrors(null);
         setUserData(newUserData);
@@ -37,7 +48,8 @@ export function Profile({ className }) {
         setFormErrors(e);
         // eslint-disable-next-line no-console
         console.log(e);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogOut = () => MainApi.postSignOut()
@@ -85,7 +97,8 @@ export function Profile({ className }) {
         type="button"
         size="m"
         color={formErrors && 'red'}
-        disabled={(!isFormDisabled && !isDirty) || !isValid}
+        isLoading={isLoading}
+        disabled={(!isFormDisabled || (!isValid && isDirty) || !!formErrors) && !isDirty}
         onClick={() => {
           if (isFormDisabled) {
             setIsFormDisabled(false);

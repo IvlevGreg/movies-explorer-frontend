@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { Label } from '../Label';
@@ -12,22 +12,42 @@ import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
 import { MainApi } from '../../utils/Api/MainApi';
 import { schemaSignUpForm } from '../../utils/validation';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+
+const DEFAULT_VALUES = { email: '', name: '', password: '' };
 
 export function Register({ className }) {
   const [formErrors, setFormErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { control, formState: { errors, isSubmitted, isValid }, handleSubmit } = useForm({
-    defaultValues: {
-      name: '', email: '', password: '',
-    },
+  const { setUserData } = useContext(CurrentUserContext);
+
+  const {
+    control, reset, watch, formState: { errors, isSubmitted, isValid }, handleSubmit,
+  } = useForm({
+    defaultValues: DEFAULT_VALUES,
     resolver: joiResolver(schemaSignUpForm),
   });
 
-  const onSubmit = (data) => MainApi.postSignUp(data)
-    .then(() => {
-      navigate('/signin');
-    })
-    .catch(setFormErrors);
+  useEffect(() => {
+    const subscription = watch(() => setFormErrors(null));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+
+    return MainApi.postSignUp(data)
+      .then(() => MainApi.getUsersMe()
+        .then((user) => {
+          navigate('/movies');
+          setUserData(user);
+          reset(DEFAULT_VALUES);
+        })
+        .catch(() => setFormErrors('Не удалось получить пользователя')))
+      .catch(setFormErrors)
+      .finally(() => setIsLoading(false));
+  };
 
   const controllers = (
     <>
@@ -57,7 +77,8 @@ export function Register({ className }) {
   const actionChildren = (
     <>
       <Button
-        disabled={isSubmitted && !isValid}
+        disabled={(isSubmitted && !isValid) || !!formErrors}
+        isLoading={isLoading}
         type="submit"
         variant="primary"
         color="blue"

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -18,25 +18,36 @@ const DEFAULT_VALUES = { email: '', password: '' };
 export function Login({ className }) {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { setUserData } = useContext(CurrentUserContext);
 
   const {
-    control, reset, formState: { errors, isSubmitted, isValid }, handleSubmit,
+    control, watch, reset, formState: { errors, isSubmitted, isValid }, handleSubmit,
   } = useForm({
     defaultValues: DEFAULT_VALUES,
     resolver: joiResolver(schemaLoginForm),
   });
 
+  useEffect(() => {
+    const subscription = watch(() => setFormErrors(null));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
   // eslint-disable-next-line no-console
-  const onSubmit = (data) => MainApi.postSignIn(data)
-    .then(() => MainApi.getUsersMe()
-      .then((user) => {
-        navigate('/movies');
-        setUserData(user);
-        reset(DEFAULT_VALUES);
-      })
-      .catch(() => setFormErrors('Не удалось получить пользователя')))
-    .catch(setFormErrors);
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    return MainApi.postSignIn(data)
+      .then(() => MainApi.getUsersMe()
+        .then((user) => {
+          navigate('/movies');
+          setUserData(user);
+          reset(DEFAULT_VALUES);
+        })
+        .catch(() => setFormErrors('Не удалось получить пользователя')))
+      .catch(setFormErrors)
+      .finally(() => setIsLoading(false));
+  };
+
   const controllers = (
     <>
       <Label
@@ -62,7 +73,8 @@ export function Login({ className }) {
         variant="primary"
         color="blue"
         size="l"
-        disabled={isSubmitted && !isValid}
+        disabled={(isSubmitted && !isValid) || !!formErrors}
+        isLoading={isLoading}
         block
       >
         Войти
