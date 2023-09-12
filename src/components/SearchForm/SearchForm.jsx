@@ -1,20 +1,18 @@
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
-import { joiResolver } from '@hookform/resolvers/joi';
 import { useEffect } from 'react';
 import styles from './SearchForm.module.css';
 import { Label } from '../Label';
 import { SearchController } from '../Controllers/SearchController';
 import { Button } from '../Button';
 import { FilterCheckboxController } from '../Controllers/FilterCheckboxController';
-import { schemaSearchForm } from '../../utils/validation';
 
 export function SearchForm({ className, onSubmit, defaultValues }) {
   const {
     control, watch, formState: { errors }, handleSubmit,
   } = useForm({
     defaultValues,
-    resolver: joiResolver(schemaSearchForm),
+    // resolver: joiResolver(schemaSearchForm),
   });
 
   useEffect(() => {
