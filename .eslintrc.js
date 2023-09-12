@@ -31,7 +31,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
 
     'no-useless-escape': 2,
-    'no-magic-numbers': 2,
+    // 'no-magic-numbers': 2,
     'no-console': 'error',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'max-len': ['warn', { code: 100 }],
