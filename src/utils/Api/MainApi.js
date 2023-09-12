@@ -15,7 +15,7 @@ class MainApiClass {
     throw new Error(mapServerErrors(error));
   }
 
-  postSignUp({ password, email }) {
+  postSignUp({ password, email, name }) {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
       headers: this._headers,
@@ -23,6 +23,7 @@ class MainApiClass {
 
       body: JSON.stringify({
         password,
+        name,
         email,
       }),
     }).then(MainApiClass._parseJson);
@@ -37,7 +38,7 @@ class MainApiClass {
     }).then(MainApiClass._parseJson);
   }
 
-  postSignIn({ password, email, name }) {
+  postSignIn({ password, email }) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
       headers: this._headers,
@@ -46,7 +47,6 @@ class MainApiClass {
       body: JSON.stringify({
         password,
         email,
-        name,
       }),
     }).then((data) => MainApiClass._parseJson(data));
   }
