@@ -49,7 +49,7 @@ export function App() {
                 <Main />
                 <Footer />
               </>
-          )}
+            )}
           />
           <Route
             path="/movies"
@@ -59,7 +59,7 @@ export function App() {
                 <Movies />
                 <Footer />
               </ProtectedRouteElement>
-          )}
+            )}
           />
           <Route
             path="/saved-movies"
@@ -69,7 +69,7 @@ export function App() {
                 <SavedMovies />
                 <Footer />
               </ProtectedRouteElement>
-          )}
+            )}
           />
           <Route
             path="/profile"
@@ -78,16 +78,24 @@ export function App() {
                 <Header loggedIn={!!userData} />
                 <Profile />
               </ProtectedRouteElement>
-          )}
+            )}
           />
 
           <Route
             path="/signin"
-            element={(<Login />)}
+            element={(
+              <ProtectedRouteElement loggedIn={!userData}>
+                <Login />
+              </ProtectedRouteElement>
+              )}
           />
           <Route
             path="/signup"
-            element={(<Register />)}
+            element={(
+              <ProtectedRouteElement loggedIn={!userData}>
+                <Register />
+              </ProtectedRouteElement>
+            )}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
