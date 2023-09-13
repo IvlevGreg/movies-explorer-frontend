@@ -13,7 +13,7 @@ const FIELDS = {
 export function MoviesPage({
   className, movies, CardComponent, limits, localStorageKey,
 }) {
-  const localStorageData = JSON.parse(localStorage.getItem(localStorageKey));
+  const localStorageData = localStorageKey && JSON.parse(localStorage.getItem(localStorageKey));
   const initialFormData = { ...FIELDS, ...localStorageData };
 
   const {

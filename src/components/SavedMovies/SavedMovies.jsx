@@ -27,7 +27,6 @@ export function SavedMovies({ className }) {
     loading: <h1>loading</h1>,
     success: <MoviesPage
       movies={movies}
-      localStorageKey="savedMovies"
       CardComponent={MoviesCardSaved}
       className={className}
     />,
