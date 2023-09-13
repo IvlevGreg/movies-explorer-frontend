@@ -22,7 +22,7 @@ export function Profile({ className }) {
   const { userData, setUserData } = useContext(CurrentUserContext);
 
   const {
-    control, watch, formState: { errors, isDirty, isValid }, handleSubmit,
+    control, watch, reset, formState: { errors, isDirty, isValid }, handleSubmit,
   } = useForm({
     defaultValues: {
       name: userData?.name || '', email: userData?.email || '',
@@ -43,6 +43,7 @@ export function Profile({ className }) {
         setFormErrors(null);
         setUserData(newUserData);
         setIsFormDisabled(true);
+        reset(data);
       }).catch((e) => {
         setIsFormDisabled(false);
         setFormErrors(e);

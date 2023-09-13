@@ -25,8 +25,7 @@ export function Register({ className }) {
   const {
     control, reset, watch, formState: { errors, isSubmitted, isValid }, handleSubmit,
   } = useForm({
-    defaultValues: DEFAULT_VALUES,
-    resolver: joiResolver(schemaSignUpForm),
+    defaultValues: DEFAULT_VALUES, resolver: joiResolver(schemaSignUpForm),
   });
 
   useEffect(() => {

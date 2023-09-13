@@ -18,7 +18,8 @@ export const MIN_LENGTH_NAME_MESSAGE = 'Минимальная длина име
 export const MIN_LENGTH_NAME = 2;
 export const MAX_LENGTH_SEARCH_MESSAGE = 'Максимальная длина фильма для поиска 40 символов';
 
-const customMethodEmail = (value, helpers) => (!validator.isEmail(value) ? helpers.error('any.invalid') : value);
+const customMethodEmail = (value, helpers) => (!validator.isEmail(value)
+  ? helpers.error('any.invalid') : value);
 
 const emailFiled = Joi.string()
   .custom(customMethodEmail)
