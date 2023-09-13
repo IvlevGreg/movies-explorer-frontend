@@ -12,6 +12,7 @@ export function Paragraph({
       [styles.paragraph_color_grey]: color === 'grey',
       [styles.paragraph_color_white]: color === 'white',
       [styles.paragraph_color_black]: color === 'black',
+      [styles.paragraph_color_green]: color === 'green',
 
       // align
       [styles.paragraph_align_center]: align === 'center',

@@ -12,12 +12,13 @@ import { SignPages } from '../SignPages';
 import { MainApi } from '../../utils/Api/MainApi';
 import { CurrentUserContext } from '../../hooks/CurrentUserContext';
 import { schemaProfileForm } from '../../utils/validation';
+import { Paragraph } from '../Paragraph';
 
 export function Profile({ className }) {
   const [isFormDisabled, setIsFormDisabled] = useState(true);
   const [formErrors, setFormErrors] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isSuccessTextShow, setIsSuccessTextShow] = useState(false);
   const navigate = useNavigate();
   const { userData, setUserData } = useContext(CurrentUserContext);
 
@@ -31,7 +32,9 @@ export function Profile({ className }) {
   });
 
   useEffect(() => {
-    const subscription = watch(() => setFormErrors(null));
+    const subscription = watch(() => {
+      setFormErrors(null);
+    });
     return () => subscription.unsubscribe();
   }, [watch]);
 
@@ -43,6 +46,7 @@ export function Profile({ className }) {
         setFormErrors(null);
         setUserData(newUserData);
         setIsFormDisabled(true);
+        setIsSuccessTextShow(true);
         reset(data);
       }).catch((e) => {
         setIsFormDisabled(false);
@@ -64,6 +68,7 @@ export function Profile({ className }) {
 
   const controllers = (
     <>
+
       <Label
         direction="row"
         errorMessage={errors.name?.message}
@@ -87,12 +92,12 @@ export function Profile({ className }) {
           disabled={isFormDisabled}
         />
       </Label>
-
     </>
   );
 
   const actionChildren = (
     <>
+
       <Button
         variant="text"
         type="button"
@@ -103,6 +108,7 @@ export function Profile({ className }) {
         onClick={() => {
           if (isFormDisabled) {
             setIsFormDisabled(false);
+            setIsSuccessTextShow(false);
           } else {
             handleSubmit(onSubmit)();
           }
@@ -119,6 +125,16 @@ export function Profile({ className }) {
       >
         Выйти из аккаунта
       </Button>
+
+      {isSuccessTextShow
+        && (
+        <Paragraph
+          color="green"
+          align="center"
+        >
+          Данные успешно изменены
+        </Paragraph>
+        )}
     </>
   );
 
