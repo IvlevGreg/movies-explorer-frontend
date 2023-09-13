@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { joiResolver } from '@hookform/resolvers/joi';
+import cn from 'classnames';
 import styles from './Profile.module.css';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -131,6 +132,7 @@ export function Profile({ className }) {
         <Paragraph
           color="green"
           align="center"
+          className={styles.form__success}
         >
           Данные успешно изменены
         </Paragraph>
@@ -144,7 +146,7 @@ export function Profile({ className }) {
       controllers={controllers}
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
-      className={className}
+      className={cn(className, styles.container)}
       isLogo={false}
       formErrors={formErrors}
     />

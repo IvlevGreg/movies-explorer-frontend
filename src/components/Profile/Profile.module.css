@@ -14,8 +14,15 @@
     flex-direction: column;
 }
 
-.form {
+.container {
+  position: relative;
+}
 
+.form__success {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
 }
 
 .profile__title {
