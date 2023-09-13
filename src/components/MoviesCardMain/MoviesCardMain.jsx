@@ -16,6 +16,7 @@ export function MoviesCardMain({
 
   const onClickLike = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     MainApi.changeLikeCardStatus(apiMovie, isLiked)
       .then(() => setIsLiked((state) => !state))
       // eslint-disable-next-line no-console
