@@ -1,20 +1,25 @@
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 import styles from './SearchForm.module.css';
 import { Label } from '../Label';
 import { SearchController } from '../Controllers/SearchController';
 import { Button } from '../Button';
 import { FilterCheckboxController } from '../Controllers/FilterCheckboxController';
 
-export function SearchForm({ className }) {
-  const { control, formState: { errors }, handleSubmit } = useForm({
-    defaultValues: {
-      search: '', filter: false,
-    },
+export function SearchForm({ className, onSubmit, defaultValues }) {
+  const {
+    control, watch, formState: { errors }, handleSubmit,
+  } = useForm({
+    defaultValues,
+    // resolver: joiResolver(schemaSearchForm),
   });
 
-  // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
+  useEffect(() => {
+    const subscription = watch(handleSubmit(onSubmit));
+    return () => subscription.unsubscribe();
+  }, [handleSubmit, watch]);
+
   return (
     <form
       className={cn(className, styles.form)}

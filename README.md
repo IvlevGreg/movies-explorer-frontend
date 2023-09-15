@@ -2,6 +2,10 @@
 
 ## Maket: dark-3
 
+## деплой бек: https://api.greg.nomoreparties.co/
+## деплой фронт: https://greg.nomoredomainsicu.ru/
+## PR: https://github.com/IvlevGreg/movies-explorer-frontend/pull/2
+
 ## About project:
 ### Stack:
 

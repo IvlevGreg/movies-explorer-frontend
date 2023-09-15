@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { joiResolver } from '@hookform/resolvers/joi';
+import cn from 'classnames';
 import styles from './Profile.module.css';
 import { Label } from '../Label';
 import { EmailController } from '../Controllers/EmailController';
@@ -7,23 +10,66 @@ import { NameController } from '../Controllers/NameController';
 import { Button } from '../Button';
 import { Divider } from '../Divider';
 import { SignPages } from '../SignPages';
+import { MainApi } from '../../utils/Api/MainApi';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+import { schemaProfileForm } from '../../utils/validation';
+import { Paragraph } from '../Paragraph';
 
 export function Profile({ className }) {
   const [isFormDisabled, setIsFormDisabled] = useState(true);
-  const { control, formState: { errors }, handleSubmit } = useForm({
+  const [formErrors, setFormErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccessTextShow, setIsSuccessTextShow] = useState(false);
+  const navigate = useNavigate();
+  const { userData, setUserData } = useContext(CurrentUserContext);
+
+  const {
+    control, watch, reset, formState: { errors, isDirty, isValid }, handleSubmit,
+  } = useForm({
     defaultValues: {
-      name: 'Виталий', email: 'pochta@yandex.ru',
+      name: userData?.name || '', email: userData?.email || '',
     },
+    resolver: joiResolver(schemaProfileForm),
   });
 
-  const onSubmit = (data) => {
-    setIsFormDisabled(true);
-    // eslint-disable-next-line no-console
-    console.log(data);
+  useEffect(() => {
+    const subscription = watch(() => {
+      setFormErrors(null);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+
+    return MainApi.updateUserData(data)
+      .then((newUserData) => {
+        setFormErrors(null);
+        setUserData(newUserData);
+        setIsFormDisabled(true);
+        setIsSuccessTextShow(true);
+        reset(data);
+      }).catch((e) => {
+        setIsFormDisabled(false);
+        setFormErrors(e);
+        // eslint-disable-next-line no-console
+        console.log(e);
+      })
+      .finally(() => setIsLoading(false));
   };
+
+  const handleLogOut = () => MainApi.postSignOut()
+    .then(() => {
+      localStorage.setItem('savedMovies', JSON.stringify(''));
+      localStorage.setItem('movies', JSON.stringify(''));
+
+      navigate('/');
+      setUserData(null);
+    }).catch(setFormErrors);
 
   const controllers = (
     <>
+
       <Label
         direction="row"
         errorMessage={errors.name?.message}
@@ -47,19 +93,23 @@ export function Profile({ className }) {
           disabled={isFormDisabled}
         />
       </Label>
-
     </>
   );
 
   const actionChildren = (
     <>
+
       <Button
         variant="text"
         type="button"
         size="m"
+        color={formErrors && 'red'}
+        isLoading={isLoading}
+        disabled={(!isFormDisabled || (!isValid && isDirty) || !!formErrors) && !isDirty}
         onClick={() => {
           if (isFormDisabled) {
             setIsFormDisabled(false);
+            setIsSuccessTextShow(false);
           } else {
             handleSubmit(onSubmit)();
           }
@@ -72,22 +122,33 @@ export function Profile({ className }) {
         color="red"
         size="m"
         type="button"
-        onClick={() => {
-        }}
+        onClick={handleLogOut}
       >
         Выйти из аккаунта
       </Button>
+
+      {isSuccessTextShow
+        && (
+        <Paragraph
+          color="green"
+          align="center"
+          className={styles.form__success}
+        >
+          Данные успешно изменены
+        </Paragraph>
+        )}
     </>
   );
 
   return (
     <SignPages
-      title="Рады видеть!"
+      title={userData?.name ? `Рады видеть, ${userData.name}!` : 'Рады видеть!'}
       controllers={controllers}
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
-      className={className}
+      className={cn(className, styles.container)}
       isLogo={false}
+      formErrors={formErrors}
     />
   );
 }

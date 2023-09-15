@@ -1,13 +1,20 @@
 import cn from 'classnames';
 import styles from './SignPages.module.css';
 import logo from '../../images/logo.svg';
+import { FormErrorText } from '../FormErrorText';
+import { Link } from '../Link';
 
 export function SignPages({
-  className, title, controllers, handleSubmit, actionChildren, isLogo = true,
+  className, title, controllers, formErrors, handleSubmit, actionChildren, isLogo = true,
 }) {
   return (
     <div className={cn(className, styles.page, { [styles.page_logo]: isLogo })}>
-      {isLogo && <img src={logo} alt="лого" className={styles.page__img} />}
+      {isLogo
+        && (
+        <Link to="/" type="LinkRouter" className={styles.page__link}>
+          <img src={logo} alt="лого" className={styles.page__img} />
+        </Link>
+        )}
       <h1 className={styles.page__title}>{title}</h1>
       <form
         onSubmit={handleSubmit}
@@ -28,6 +35,11 @@ export function SignPages({
         </div>
 
         <div className={cn(styles.form__container, styles.form__container_size_14)}>
+          {formErrors && (
+          <FormErrorText>
+            {(formErrors.message)}
+          </FormErrorText>
+          ) }
           {actionChildren}
         </div>
       </form>

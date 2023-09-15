@@ -3,68 +3,84 @@
 
 
 body {
-    color: var(--main-txt-color);
-    background: var(--main-bg-color);
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: var(--main-txt-color);
+  background: var(--main-bg-color);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  height: 100px;
+  min-height: 100vh;
 }
 
 .modal-open {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 :root {
-    /*background*/
-    --main-bg-color: #202020;
-    --primary-bg-color: #272727;
-    --secondary-bg-color: #073042;
-    --secondary-bg-color-inverted: #3DDC84;
-    --main-bg-color-inverted: #303030;
+  /*background*/
+  --main-bg-color: #202020;
+  --primary-bg-color: #272727;
+  --secondary-bg-color: #073042;
+  --secondary-bg-color-inverted: #3DDC84;
+  --main-bg-color-inverted: #303030;
 
-    /*text-color*/
-    --main-txt-color: #fff;
-    --primary-txt-color: #272727;
-    --secondary-txt-color: #8B8B8B;
-    --secondary-txt-color-inverted: #000000;
+  /*text-color*/
+  --main-txt-color: #fff;
+  --primary-txt-color: #272727;
+  --secondary-txt-color: #8B8B8B;
+  --secondary-txt-color-inverted: #000000;
 
 
-    /*border-color*/
-    --main-bor-color: #424242;
-    --primary-bor-color: #DADADA;
+  /*border-color*/
+  --main-bor-color: #424242;
+  --primary-bor-color: #DADADA;
 
-    /*padding*/
-    --main-p-hor-mobile: 18px;
-    --main-p-hor-tablet: 50px;
-    --main-p-hor-desktop: 70px;
+  /*padding*/
+  --main-p-hor-mobile: 18px;
+  --main-p-hor-tablet: 50px;
+  --main-p-hor-desktop: 70px;
 
-    /* ui */
+  /* ui */
   --main-outline-color: #135dd5;
 
-    /*size*/
-    --header-height: 74px
+  /*size*/
+  --header-height: 74px
 }
 
 .main__divider {
-    margin-top: 28px;
-    margin-bottom: 60px;
+  margin-top: 28px;
+  margin-bottom: 60px;
 }
 
 .main__content {
-    max-width: 1140px;
-    margin: 0 auto;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {
-    .main__divider {
-        margin-top: 23px;
-        margin-bottom: 70px;
-    }
+  .main__divider {
+    margin-top: 23px;
+    margin-bottom: 70px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
 
-    .main__divider_tech {
-        margin-bottom: 90px;
-    }
+  .main__divider_tech {
+    margin-bottom: 90px;
+  }
+}
+
+.h-text-center {
+  text-align: center;
 }
 
 /*// off*/

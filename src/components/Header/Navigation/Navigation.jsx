@@ -1,21 +1,24 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Navigation.module.css';
 import { Button } from '../../Button';
 import burgerIcon from '../../../images/burgerIcon.svg';
 import { Link } from '../../Link';
 import { NavigationModal } from '../NavigationModal';
 import { Popup } from '../../Popup';
-
-const IS_AUTH = true;
+import { CurrentUserContext } from '../../../hooks/CurrentUserContext';
 
 export function Navigation({ className }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { userData } = useContext(CurrentUserContext);
+  const isAuth = !!userData;
+  const openModal = () => setIsModalVisible(true);
+  const closeModal = () => setIsModalVisible(false);
 
   const notAuthComponent = (
     <div>
       <Link
-        href="/signup"
+        to="/signup"
         type="LinkRouter"
         underline={false}
         size="m"
@@ -23,7 +26,7 @@ export function Navigation({ className }) {
         Регистрация
       </Link>
       <Link
-        href="/signin"
+        to="/signin"
         type="LinkRouter"
         variant="primary"
         color="green"
@@ -35,44 +38,42 @@ export function Navigation({ className }) {
     </div>
   );
 
-  const openModal = () => setIsModalVisible(true);
-  const closeModal = () => setIsModalVisible(false);
+  const AuthComponent = (
+    <>
+      <Button
+        variant="text"
+        size="0"
+        onClick={openModal}
+        className={styles.nav__burger}
+      >
+        <img src={burgerIcon} alt="Бургер меню" />
+      </Button>
 
-  return (
-    <nav className={cn(className, styles.nav)}>
-      {IS_AUTH ? (
-        <>
-          <Button
-            variant="text"
-            size="0"
-            onClick={openModal}
-            className={styles.nav__burger}
-          >
-            <img src={burgerIcon} alt="Бургер меню" />
-          </Button>
-
-          <Popup
-            isOpen={isModalVisible}
-            onClose={closeModal}
-            className={styles.nav__popup}
-          >
-            <div className={styles.popup__content}>
-              <NavigationModal
-                className={styles.nav__list}
-                classNameMain={styles.nav__main}
-                onClose={closeModal}
-              />
-            </div>
-          </Popup>
-
+      <Popup
+        isOpen={isModalVisible}
+        onClose={closeModal}
+        className={styles.nav__popup}
+      >
+        <div className={styles.popup__content}>
           <NavigationModal
-            className={cn(styles.nav__list, styles.nav__list_desktop)}
+            className={styles.nav__list}
             classNameMain={styles.nav__main}
             onClose={closeModal}
           />
+        </div>
+      </Popup>
 
-        </>
-      ) : (notAuthComponent)}
+      <NavigationModal
+        className={cn(styles.nav__list, styles.nav__list_desktop)}
+        classNameMain={styles.nav__main}
+        onClose={closeModal}
+      />
+    </>
+  );
+
+  return (
+    <nav className={cn(className, styles.nav, { [styles.nav_auth_no]: !isAuth })}>
+      {isAuth ? AuthComponent : notAuthComponent}
     </nav>
   );
 }

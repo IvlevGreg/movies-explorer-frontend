@@ -1,9 +1,8 @@
 .content {
-    display: flex;
-    gap:60px;
-    flex-direction: column;
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
 }
-
 
 .movies {
     margin: 0;

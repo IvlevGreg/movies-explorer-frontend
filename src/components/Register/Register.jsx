@@ -1,4 +1,7 @@
 import { useForm } from 'react-hook-form';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { joiResolver } from '@hookform/resolvers/joi';
 import { Label } from '../Label';
 import { NameController } from '../Controllers/NameController';
 import { EmailController } from '../Controllers/EmailController';
@@ -7,16 +10,44 @@ import { SignPages } from '../SignPages';
 import { Button } from '../Button';
 import styles from '../SignPages/SignPages.module.css';
 import { Link } from '../Link';
+import { MainApi } from '../../utils/Api/MainApi';
+import { schemaSignUpForm } from '../../utils/validation';
+import { CurrentUserContext } from '../../hooks/CurrentUserContext';
+
+const DEFAULT_VALUES = { email: '', name: '', password: '' };
 
 export function Register({ className }) {
-  const { control, formState: { errors }, handleSubmit } = useForm({
-    defaultValues: {
-      name: '', email: '', password: '',
-    },
+  const [formErrors, setFormErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { setUserData } = useContext(CurrentUserContext);
+
+  const {
+    control, reset, watch, formState: { errors, isSubmitted, isValid }, handleSubmit,
+  } = useForm({
+    defaultValues: DEFAULT_VALUES, resolver: joiResolver(schemaSignUpForm),
   });
 
-  // eslint-disable-next-line no-console
-  const onSubmit = (data) => console.log(data);
+  useEffect(() => {
+    const subscription = watch(() => setFormErrors(null));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+
+    return MainApi.postSignUp(data)
+      .then(() => MainApi.getUsersMe()
+        .then((user) => {
+          navigate('/movies');
+          setUserData(user);
+          reset(DEFAULT_VALUES);
+        })
+        .catch(() => setFormErrors('Не удалось получить пользователя')))
+      .catch(setFormErrors)
+      .finally(() => setIsLoading(false));
+  };
+
   const controllers = (
     <>
       <Label
@@ -45,6 +76,8 @@ export function Register({ className }) {
   const actionChildren = (
     <>
       <Button
+        disabled={(isSubmitted && !isValid) || !!formErrors}
+        isLoading={isLoading}
         type="submit"
         variant="primary"
         color="blue"
@@ -57,7 +90,7 @@ export function Register({ className }) {
         Уже зарегистрированы?
         {' '}
         <Link
-          href="signin"
+          to="/signin"
           type="LinkRouter"
           color="blue"
           underline={false}
@@ -75,6 +108,7 @@ export function Register({ className }) {
       handleSubmit={handleSubmit(onSubmit)}
       actionChildren={actionChildren}
       className={className}
+      formErrors={formErrors}
     />
   );
 }
