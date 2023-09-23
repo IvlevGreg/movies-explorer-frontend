@@ -6,7 +6,7 @@ import { Techs } from './Techs';
 import { AboutMe } from './AboutMe';
 import { Portfolio } from './Portfolio';
 
-export function Main({ className }) {
+export function Landing({ className }) {
   return (
     <main className={className}>
       <Promo />
