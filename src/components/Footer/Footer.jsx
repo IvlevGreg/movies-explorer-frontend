@@ -5,7 +5,7 @@ import { Divider } from '../Divider';
 import { Link } from '../Link';
 
 const LINKS = [{
-  href: 'https://practicum.yandex.ru', text: 'Яндекс.Практикум',
+  href: 'https://t.me/IGregor', text: 'Telegram',
 }, {
   href: 'https://github.com/IvlevGreg', text: 'Github',
 }];
@@ -20,7 +20,7 @@ export function Footer({ className }) {
           align="center"
           className={styles.footer__title}
         >
-          Учебный проект Яндекс.Практикум х BeatFilm.
+          based on BeatFilm API
         </Paragraph>
         <Divider color="gray" className={styles.footer__divider} />
 
@@ -41,7 +41,7 @@ export function Footer({ className }) {
           </ul>
 
           <Paragraph className={styles.footer__ps} color="grey" align="center" reset>
-            ©2020
+            ©2023
           </Paragraph>
         </div>
       </div>

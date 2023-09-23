@@ -1,12 +1,11 @@
-#  Movies 🗺️
-
-## Maket: dark-3
+# Movies saver 🎥
 
 ## деплой бек: https://api.greg.nomoreparties.co/
+
 ## деплой фронт: https://greg.nomoredomainsicu.ru/
-## PR: https://github.com/IvlevGreg/movies-explorer-frontend/pull/2
 
 ## About project:
+
 ### Stack:
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -16,11 +15,12 @@
 ![React Hook Form](https://img.shields.io/badge/react_hook_form-EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
 
 ### Overview:
+
 - Utilized the BEM methodology for HTML markup and Sass implementation
 - Implemented adaptive web design, cross-browser development, responsive images
 - Implemented js form with validation
 
-### Deploy: 
+### Deploy:
 
 ## Get started:
 

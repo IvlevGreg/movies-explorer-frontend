@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
 import { ProtectedRouteElement } from '../ProtectedRouteElement';
-import { Main } from '../Main';
+import { Landing } from '../Landing';
 import { Register } from '../Register';
 import { NotFoundPage } from '../NotFoundPage';
 import { Login } from '../Login';
@@ -46,7 +46,7 @@ export function App() {
             element={(
               <>
                 <Header loggedIn={!!userData} color="secondary" />
-                <Main />
+                <Landing />
                 <Footer />
               </>
             )}
