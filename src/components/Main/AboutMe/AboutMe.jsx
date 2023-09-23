@@ -18,7 +18,8 @@ export function AboutMe({ className }) {
         <div className={styles.about__content}>
           <div className={styles['about__me-container']}>
             <div className={styles.me}>
-              <h3 className={styles.me__title}>Виталий</h3>
+              <h3 className={styles.me__title}>Гриша</h3>
+
               <Paragraph
                 size={12}
                 weight={500}
@@ -31,7 +32,9 @@ export function AboutMe({ className }) {
                 В школе любил программирование и математику, решал много задач,
                 победил в двух математических олимпиадах,
                 что позволило поступить в университет на бюджет вне конкурса
+              </Paragraph>
 
+              <Paragraph reset className={styles.me__descr}>
                 Всегда хотел работать над большим проектом,
                 но имел неправильное представление о работе разработчиком,
                 поэтому принял решение пойти в строительство, а не в IT.
@@ -43,6 +46,7 @@ export function AboutMe({ className }) {
             <Link
               href="https://github.com/IvlevGreg"
               underline={false}
+              color="blue"
               className={styles.about__link}
             >
               Github
