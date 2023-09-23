@@ -20,7 +20,7 @@ export function Footer({ className }) {
           align="center"
           className={styles.footer__title}
         >
-          Учебный проект Яндекс.Практикум х BeatFilm.
+          based on BeatFilm API
         </Paragraph>
         <Divider color="gray" className={styles.footer__divider} />
 
@@ -41,7 +41,7 @@ export function Footer({ className }) {
           </ul>
 
           <Paragraph className={styles.footer__ps} color="grey" align="center" reset>
-            ©2020
+            ©2023
           </Paragraph>
         </div>
       </div>
