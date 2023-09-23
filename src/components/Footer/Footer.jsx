@@ -5,7 +5,7 @@ import { Divider } from '../Divider';
 import { Link } from '../Link';
 
 const LINKS = [{
-  href: 'https://practicum.yandex.ru', text: 'Яндекс.Практикум',
+  href: 'https://t.me/IGregor', text: 'Telegram',
 }, {
   href: 'https://github.com/IvlevGreg', text: 'Github',
 }];
