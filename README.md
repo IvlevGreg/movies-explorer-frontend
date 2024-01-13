@@ -1,8 +1,6 @@
 # Movies saver 🎥
 
-## деплой бек: https://api.greg.nomoreparties.co/
-
-## деплой фронт: https://greg.nomoredomainsicu.ru/
+## деплой: https://greg.nomoredomainsicu.ru/ (сейчас не работает()
 
 ## About project:
 
@@ -19,6 +17,8 @@
 - Utilized the BEM methodology for HTML markup and Sass implementation
 - Implemented adaptive web design, cross-browser development, responsive images
 - Implemented React Hook Form form with validation by joi
+- Used Redux and Axios for  fetching and working with data
+
 
 ### Deploy:
 
