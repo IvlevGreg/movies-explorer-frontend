@@ -18,7 +18,7 @@
 
 - Utilized the BEM methodology for HTML markup and Sass implementation
 - Implemented adaptive web design, cross-browser development, responsive images
-- Implemented js form with validation
+- Implemented React Hook Form form with validation by joi
 
 ### Deploy:
 
