@@ -1,6 +1,8 @@
 # Movies saver 🎥
 
-## деплой: https://greg.nomoredomainsicu.ru/ (сейчас не работает()
+## API: https://github.com/IvlevGreg/movies-explorer-api
+
+## Деплой: **currently disabled** h̶t̶t̶p̶s̶:̶/̶/̶g̶r̶e̶g̶.̶n̶o̶m̶o̶r̶e̶d̶o̶m̶a̶i̶n̶s̶i̶c̶u̶.̶r̶u̶/̶
 
 ## About project:
 
